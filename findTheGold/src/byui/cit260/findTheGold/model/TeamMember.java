@@ -12,58 +12,26 @@ import java.util.Objects;
  *
  * @author kjpar
  */
-public class TeamMember implements Serializable {
+public enum TeamMember {
+    
+    Jeff("Jeff Bryant", "A member of Team-5"),
+    Kristen("Kristen Parkinson", "A member of Team-5");
     
     // class instance variables
     private String name;
     private String title;
-
-    public TeamMember() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    
+    TeamMember(String name, String title){
         this.name = name;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
         this.title = title;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 13 * hash + Objects.hashCode(this.name);
-        hash = 13 * hash + Objects.hashCode(this.title);
-        return hash;
+    public String getName(){
+        return name;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final TeamMember other = (TeamMember) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.title, other.title)) {
-            return false;
-        }
-        return true;
+    
+    public String getTitle(){
+        return title;
     }
 
     @Override

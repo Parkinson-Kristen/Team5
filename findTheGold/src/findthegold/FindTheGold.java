@@ -5,7 +5,7 @@
  */
 package findthegold;
 
-import byui.cit260.findTheGold.model.Actor;
+import byui.cit260.findTheGold.model.TeamMember;
 import byui.cit260.findTheGold.model.Player;
 import java.util.HashSet;
 
@@ -21,7 +21,7 @@ public class FindTheGold {
     public static void main(String[] args) {
         Player playerOne = new Player();
         
-        playerOne.setName("Wilma Flintstone");
+        playerOne.setName("Wilma Flintsone");
         
         System.out.println(playerOne.toString());
         
@@ -29,11 +29,11 @@ public class FindTheGold {
         
         System.out.println("Name = " + playerOneName);
         
-        Actor.Kristen.getName();
-        Actor.Kristen.getDescription();
+        TeamMember.Jeff.getName();
+        TeamMember.Jeff.getTitle();
+        TeamMember.Kristen.getName();
+        TeamMember.Kristen.getTitle();
         
-        System.out.println();
+        System.out.print(TeamMember.Kristen.toString());
                 
     }
-    
-}
