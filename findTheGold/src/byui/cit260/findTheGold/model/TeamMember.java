@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author kjpar
  */
-public enum TeamMember {
+public enum TeamMember implements Serializable {
     
     Jeff("Jeff Bryant", "A member of Team-5"),
     Kristen("Kristen Parkinson", "A member of Team-5");

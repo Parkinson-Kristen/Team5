@@ -6,8 +6,7 @@
 package byui.cit260.findTheGold.model;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.*;
 /**
  *
  * @author kjpar
@@ -17,13 +16,13 @@ public class Game implements Serializable {
     // class instance variable
     private Map theMap;
     private Player thePlayer;
-    private CropDate cropData;
-    private TeamMember team[];
-    private ArayList<ListItem> animals;
+    private CropData cropData;
+    private ArrayList<ListItem> animals;
     private ArrayList<ListItem> tools;
     private ArrayList<ListItem> provision;
     
     private String name;
+    private TeamMember[] team;
     
     public Game() {
     }
@@ -44,11 +43,11 @@ public class Game implements Serializable {
         this.thePlayer = thePlayer;
     }
 
-    public CropDate getCropData() {
+    public CropData getCropData() {
         return cropData;
     }
 
-    public void setCropData(CropDate cropData) {
+    public void setCropData(CropData cropData) {
         this.cropData = cropData;
     }
 
@@ -60,27 +59,27 @@ public class Game implements Serializable {
         this.team = team;
     }
 
-    public <any> getAnimals() {
+    public ArrayList<ListItem> getAnimals() {
         return animals;
     }
 
-    public void setAnimals(<any> animals) {
+    public void setAnimals(ArrayList<ListItem> animals) {
         this.animals = animals;
     }
 
-    public <any> getTools() {
+    public ArrayList<ListItem> getTools() {
         return tools;
     }
 
-    public void setTools(<any> tools) {
+    public void setTools(ArrayList<ListItem> tools) {
         this.tools = tools;
     }
 
-    public <any> getProvision() {
+    public ArrayList<ListItem> getProvision() {
         return provision;
     }
 
-    public void setProvision(<any> provision) {
+    public void setProvision(ArrayList<ListItem> provision) {
         this.provision = provision;
     }
 
