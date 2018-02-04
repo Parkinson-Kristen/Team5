@@ -9,11 +9,12 @@ import byui.cit260.findTheGold.model.TeamMember;
 import byui.cit260.findTheGold.model.Player;
 import byui.cit260.findTheGold.model.Location;
 import byui.cit260.findTheGold.model.CropData;
+import byui.cit260.findTheGold.model.ListItem;
 import java.util.HashSet;
 
 /**
  *
- * @author kjpar
+ * @author kjpar and Jeff
  */
 public class FindTheGold {
 
@@ -25,6 +26,7 @@ public class FindTheGold {
         
         Location firstLocation = new Location();
         CropData firstData = new CropData();
+        ListItem firstItem = new ListItem();
         
         playerOne.setName("Wilma Flintsone");
         firstLocation.setDescription("Zarahemla");
@@ -45,6 +47,31 @@ public class FindTheGold {
         firstData.setNumStarved(5);
         firstData.setEatenByRats(2);
         firstData.setWheatForPeople(3);
+        firstItem.setFish("Fish");
+        firstItem.setLion("Lion");
+        firstItem.setOwl("Owl");
+        firstItem.setSerpent("Serpent");
+        firstItem.setCow("Cow");
+        firstItem.setBat("Bat");
+        firstItem.setElephant("Elephant");
+        firstItem.setDog("Dog");
+        firstItem.setOx("Ox");
+        firstItem.setHorse("Horse");
+        firstItem.setBear("Bear");
+        firstItem.setWhale("Whale");
+        firstItem.setDove("Dove");
+        firstItem.setSword("Sword");
+        firstItem.setBow("Bow");
+        firstItem.setArrow("Arrow");
+        firstItem.setAx("Ax");
+        firstItem.setCimeter("Cimeter");
+        firstItem.setPlowShare("Plow-Share");
+        firstItem.setSpear("Spear");
+        firstItem.setBreastplate("Breastplate");
+        firstItem.setUrimAndThummim("Urim and Thummim");
+        firstItem.setHammer("Hammer");
+        firstItem.setNail("Nail");
+        firstItem.setAnvil("Anvil");       
        
         System.out.println(playerOne.toString());
         
@@ -61,6 +88,7 @@ public class FindTheGold {
         System.out.print(TeamMember.Jeff.toString());
         
         System.out.println(firstLocation.toString());
-        System.out.println(firstData.toString());    
+        System.out.println(firstData.toString());
+        System.out.println(firstItem.toString());
     }
 }
