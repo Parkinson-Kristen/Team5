@@ -31,21 +31,21 @@ public class FindTheGold {
         playerOne.setName("Wilma Flintsone");
         firstLocation.setDescription("Zarahemla");
         firstLocation.setSymbol("mark");
-        firstData.setYear(32);
-        firstData.setPopulation(344);
-        firstData.setAcresOwned(34);
-        firstData.setCropYield(45);
-        firstData.setWheatInStore(45);
+        firstData.setYear(1);
+        firstData.setPopulation(100);
+        firstData.setAcresOwned(1000);
+        firstData.setCropYield(3);
+        firstData.setWheatInStore(3000);
         firstData.setNumberWhoDied(2);
-        firstData.setNewPeople(6);
+        firstData.setNewPeople(5);
         firstData.setHarvest(45);
-        firstData.setHarvestAfterOffering(98);
-        firstData.setOffering(65);
+        firstData.setHarvestAfterOffering(2700);
+        firstData.setOffering(300);
         firstData.setOfferingBushels(24);
         firstData.setPeopleFed(4);
         firstData.setAcresPlanted(4);
         firstData.setNumStarved(5);
-        firstData.setEatenByRats(2);
+        firstData.setEatenByRats(0);
         firstData.setWheatForPeople(3);
         firstItem.setFish("Fish");
         firstItem.setLion("Lion");
@@ -90,5 +90,7 @@ public class FindTheGold {
         System.out.println(firstLocation.toString());
         System.out.println(firstData.toString());
         System.out.println(firstItem.toString());
-    }
+     
+}
+    
 }
