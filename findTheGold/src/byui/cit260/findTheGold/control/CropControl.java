@@ -17,6 +17,12 @@ public class CropControl {
 //contants
 private static final int LAND_BASE = 17;
 private static final int LAND_RANGE = 10;
+//Returns/WheatHarvest: a randomly generated number between 2 -4 bushels per acre for tithes between 8-12%.
+// Returns/WheatHarvest: a randomly generated number between 1-3 bushels per acre for tithes below 8%.
+// Returns/WheatHarvest: a randomly generated number between 2 and 5 bushels per acre for tithes above 12%
+// Returns/WheatEatenbyRats: a randomly generated number between 3-7% of wheat in store for tithes between 8-12%
+// Returns/WheatEatenbyRats: a randomly generated number between 6-10% of wheat in store for tithes below 8%
+// Returns/WheatEatenbyRats: a randomly generated number between 3-5% of wheat in store for tithes above 12%
 
 //random number generator
 private static Random random = new Random();
@@ -65,38 +71,72 @@ public int sellLand(int landPrice, int acresToSell, CropData cropData){
 
 public static int buyLand(int landPrice, int acresToPurchase, CropData cropData){
    
-    //acresOwned
-    int owned = cropData.getAcresOwned();
-    
-    //population
-    int population = 100;
-    
-    //storeWheat
-    int wheat = cropData.getWheatInStore();
-
     //If acresToPurchase < 0, return -1
     if (acresToPurchase < 0)
         return -1;
+    
+    int population = cropData.getPopulation();
+    
+    int owned = cropData.getAcresOwned();
 
     //If (acresToPurchase * landPrice) > storeWheat, return -1
-    if ((acresToPurchase * landPrice) > wheat)
+    int wheatInStore = cropData.getWheatInStore();
+    if ((landPrice * acresToPurchase) > wheatInStore)
         return -1;
 
     //If Population < acresOwned/10, return -1
-    if (population < owned/10)
+    if (population < ((owned + acresToPurchase)/10))
         return -1;
-
+    
+        
+    //land purchase calculation
+    int wheat = (landPrice * acresToPurchase);
+    
+    //add newly purchased land to existing acresOwned
     //acresOwned = acresOwned + acresToPurchase, return acresOwned 
-    owned -= acresToPurchase;
+    
+    owned += acresToPurchase;
     cropData.setAcresOwned(owned);
 
+    //wheat used for purchase minus wheatInStore = new wheatInStore amount
     //storeWheat = storeWheat – (storeWheat * acresToPurchase), return storeWheat
+    wheat = cropData.getWheatInStore();
     wheat -= (wheat * acresToPurchase);
     cropData.setWheatInStore(wheat);
 
      //return acresOwned
     return owned;
 }
+
+
+// The setOffering method
+// Purpose: To pay tithes
+// Parameters: the percentage of tithes from the wheat harvest
+// Pre-conditions: tithes must be in the positive
+//  and <=0 
+//  and >= 100
+
+public static int setOffering(int offering, CropData cropData){
+   
+    // if setOffering < 0, return -1
+    if (offering < 0) 
+        return -1;
+
+    // if setOffering > 100, return -1
+    if(offering > 100)
+        return -1;
+   
+    int harvest = cropData.getHarvest();
+    
+    int percentHarvest = (offering * 100/harvest);
+
+    return percentHarvest;
+
+}
+
+
+
+
 
 
 
