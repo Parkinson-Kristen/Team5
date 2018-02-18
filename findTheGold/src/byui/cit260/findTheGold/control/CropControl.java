@@ -10,7 +10,7 @@ import java.util.Random;
 
 /**
  *
- * @author kjpar
+ * @author kjpar & jeff
  */
 public class CropControl {
     
@@ -133,6 +133,55 @@ public static int setOffering(int offering, CropData cropData){
     return percentHarvest;
 
 }
+
+
+// The plantCrops method
+// Purpose: Plant Crops
+// Parameters: Enter the number of acres that you wish to plant. You can plant 
+//    2 acres with one bushel of wheat.
+// Pre-conditions: The bushels of wheat must be positive number that is less than 
+//    or equal to the total amount of land that the city owns. The amount of wheat 
+//    must be less than or equal to the total amount of wheat in storage. 
+// Check to make sure that the value is positive. If it is not, show a message 
+//    and ask the user to enter the value again.
+// Check to make sure the city has this much land. If not, show a message and 
+//    ask the user to enter a new value.
+// Check to make sure that the city has enough wheat in storage to plant this 
+//    many acres (You can plant 2 acres with one bushel of wheat). If not, show 
+//    a message and ask the user to enter a new value.
+// Returns: The number of bushels required to plant the crops subtracted from 
+//    the amount of wheat in storage.
+// Returns: Number of acres that have been planted.
+
+public static int plantCrops(int wheatToPlant, int acresToPlant, CropData cropData){
+   
+    
+    //If acresToPlant < 1, return -1
+    if (acresToPlant < 1)
+        return -1;
+    
+    int acresAvailable = cropData.getAcresOwned();
+    
+    int wheatAvailable = cropData.getWheatInStore();
+    
+    //If acresToPlant > acresAvailable, return -1
+    if (acresToPlant > acresAvailable) 
+        return -1;
+    
+    //If wheatToPlant > wheatAvailable, return -1
+    if (wheatToPlant > wheatAvailable) 
+        return -1;
+
+    //wheatAvailable = acresToPlant / 2
+    wheatAvailable = acresToPlant / 2;
+
+    //wheatAvailable = wheatAvailable – wheatToPlant
+    wheatAvailable = (wheatAvailable - wheatToPlant);
+
+    //return wheatAvailable
+    return wheatAvailable;
+}
+
 
 
 
