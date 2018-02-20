@@ -29,7 +29,7 @@ public class FindTheGold {
         ListItem secondData = new ListItem();
         ListItem firstItem = new ListItem();
         
-        playerOne.setName("Wilma Flintsone");
+        playerOne.setPlayerName("Wilma Flintsone");
         firstLocation.setDescription("Zarahemla");
         firstLocation.setSymbol("mark");
         firstData.setYear(1);
@@ -55,7 +55,7 @@ public class FindTheGold {
        
         System.out.println(playerOne.toString());
         
-        String playerOneName = playerOne.getName();
+        String playerOneName = playerOne.getPlayerName();
         
         System.out.println("Name = " + playerOneName);
         

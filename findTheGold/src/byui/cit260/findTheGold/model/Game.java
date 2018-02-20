@@ -7,10 +7,9 @@ package byui.cit260.findTheGold.model;
 
 import java.io.Serializable;
 import java.util.*;
-/**
- *
- * @author kjpar
- */
+
+//Author: Team 5 - Jeff and Kristen
+
 public class Game implements Serializable {
     
     // class instance variable
@@ -35,11 +34,11 @@ public class Game implements Serializable {
         this.theMap = theMap;
     }
     
-    public Player getThePlayer() {
+    public Player getPlayer() {
         return thePlayer;
     }
     
-    public void setThePlayer(Player thePlayer) {
+    public void setPlayer(Player thePlayer) {
         this.thePlayer = thePlayer;
     }
 

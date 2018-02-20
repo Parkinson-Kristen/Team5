@@ -7,10 +7,8 @@ package byui.cit260.findTheGold.model;
 
 import java.io.Serializable;
 
-/**
- *
- * @author kjpar
- */
+//Author: Team 5 - Jeff and Kristen
+
 public class CropData implements Serializable{
     
     // class instance variable

@@ -8,10 +8,8 @@ package byui.cit260.findTheGold.control;
 import byui.cit260.findTheGold.model.CropData;
 import java.util.Random;
 
-/**
- *
- * @author kjpar & jeff
- */
+//Author: Team 5 - Jeff and Kristen
+
 public class CropControl {
     
 //contants
