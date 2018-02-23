@@ -1,7 +1,7 @@
 //MainMenuView class - part of the view layer
 //Object of this class is to manage the main menu
 //Author: Team 5 - Jeff and Kristen 
-//Last Modified: Feb 2018
+//Last Modified: Feb 22 2018
 //---------------------------
 package byui.cit260.findTheGold.view;
 
@@ -144,7 +144,7 @@ public void startNewGame(){
     theGame.setPlayer(thePlayer);
     
     //Display a welcome message.
-    System.out.println("\nWelcome " +name+ "have fun!");
+    System.out.println("\nWelcome " +name+ " have fun!");
     
     //Display the Game menu.
 }
