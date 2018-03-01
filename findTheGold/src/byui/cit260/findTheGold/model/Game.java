@@ -1,14 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//The City of Aaron Game
+//The driver file, contains the main() method
+//Author: Team 5 - Jeff and Kristen 
+//Last Modified: Feb 2018
+//---------------------------
 package byui.cit260.findTheGold.model;
 
 import java.io.Serializable;
 import java.util.*;
-
-//Author: Team 5 - Jeff and Kristen
 
 public class Game implements Serializable {
     
@@ -19,7 +17,7 @@ public class Game implements Serializable {
     private ArrayList<ListItem> animals;
     private ArrayList<ListItem> tools;
     private ArrayList<ListItem> provision;
-    
+    private CropData theCrops = null;
     private String name;
     private TeamMember[] team;
     
@@ -80,6 +78,21 @@ public class Game implements Serializable {
 
     public void setProvision(ArrayList<ListItem> provision) {
         this.provision = provision;
+    }
+      //the getCrops() method
+    //Purpose: get a reference to the crop object
+    //Parameters: none
+    //Returns: a reference to a crop object
+    public CropData getCrop(){
+        return theCrops;
+    }
+    
+    //the setCrops() method
+    //Purpose: store a reference to a crop object
+    //Parameters: a reference to a crop object
+    //Returns: none
+    public void setCrop(CropData _cropRef){
+        theCrops = _cropRef;
     }
 
     @Override
@@ -143,5 +156,11 @@ public class Game implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+    
+    
+    
+    
+  
+    
     
 }

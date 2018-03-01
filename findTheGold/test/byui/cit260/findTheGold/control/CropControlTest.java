@@ -153,7 +153,17 @@ public class CropControlTest {
         assertEquals(expResult, result);
     }
     
-    
+    @Test
+    public void testpayOffering1(){
+        System.out.println("payOffering");
+        CropData theCrops = new CropData();
+        int offeringBushels = -1;
+        int wheatInStore = 50;
+        theCrops.setHarvestAfterOffering(wheatInStore);
+        int expResult = -1;
+        int result = CropControl.payOffering(offeringBushels, wheatInStore, theCrops);
+        assertEquals(expResult, result);
+    }
     
     
 }

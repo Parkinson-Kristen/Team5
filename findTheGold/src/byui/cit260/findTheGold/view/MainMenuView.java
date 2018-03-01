@@ -9,6 +9,7 @@ import java.util.Scanner;
 import byui.cit260.findTheGold.control.*;
 import byui.cit260.findTheGold.model.*;
 import byui.cit260.findTheGold.Team5GameProject.*;
+import byui.cit260.findTheGold.view.*;
 
 public class MainMenuView {
         
@@ -21,36 +22,35 @@ public class MainMenuView {
   
 
 //The displayMenuView method
-//Purpose: displays the menue, gets the user's input, and does the 
+//Purpose: displays the menu, gets the user's input, and does the 
     //selected action
 //Parameters: none
 //Returns: none
 //-------------------------------------------------------------------
-public void displayMenuView(){    
+public void displayMainMenuView(){    
     
-    int menuOption;
-    do
-    {
-        //Display the menu
-        System.out.println(mainMenu);
-        
-        //Prompt the user and get the user's input
-        menuOption = getMenuOption();
-        
-        //Perform the desired action
-        doAction(menuOption);
-        
-        //Determine and display the next view
-    } while (menuOption!= max);
+    int menuOption;    
+    do    {
+       //Display the menu
+       System.out.println(mainMenu); 
+
+       //Prompt the user and get the user's input
+       menuOption = getMenuOption();
+       
+       //Perform the desired action
+       doAction(menuOption);
+       
+       //Determine and display the next view
+   } while (menuOption!= max);
     } 
-    
+
 //The get MenuOption method
 //Purpose: gets the user's input
 //Parameters: none
 //Returns: integer - the option selected
 //----------------------------------------
 public int getMenuOption(){
-    
+
     //declare a variable to hold user's input
     int userInput;
     
@@ -100,6 +100,10 @@ public void doAction(int option){
         //if the option is 5, display a goodbye message
         case 5:
             System.out.println("Thanks for playing ... goodbye");
+            break;
+        default:
+            System.out.println("\n*** Invalid selection *** Try Again");
+            break;
     }
 }
     
@@ -144,9 +148,29 @@ public void startNewGame(){
     theGame.setPlayer(thePlayer);
     
     //Display a welcome message.
-    System.out.println("\nWelcome " +name+ "have fun!");
+    System.out.println("\nWelcome " +name+ " have fun!");
     
     //Display the Game menu.
+    GameMenuView gameMenu = new GameMenuView();
+    gameMenu.displayMainMenuView();
+    
+    //Create the CropData object,
+    //initialize it and save a reference to it in the Game.
+    CropData theCrops = new CropData();
+    theCrops.setYear(0);
+    theCrops.setPopulation(100);
+    theCrops.setNewPeople(5);
+    theCrops.setCropYield(3);
+    theCrops.setNumberWhoDied(0);
+    theCrops.setOffering(10);
+    theCrops.setWheatInStore(2700);
+    theCrops.setAcresOwned(1000);
+    theCrops.setAcresPlanted(1000);
+    theCrops.setHarvest(3000);
+    theCrops.setOfferingBushels(300);
+    theCrops.setAcresPlanted(1000);
+    
+    theGame.setCropData(theCrops);
 }
 
 //The startSavedGame method
@@ -191,6 +215,7 @@ public MainMenuView(){
                 "*************************************\n" +
                 "* CITY OF AARON: MAIN GAME MENU *\n" +
                 "*************************************\n" +
+                "0 - Game Menu\n" +              
                 "1 - Start new game\n" +
                 "2 - Get and start a saved game\n" +
                 "3 - Get help on playing the game\n" +
