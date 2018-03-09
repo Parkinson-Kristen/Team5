@@ -110,7 +110,7 @@ public static void plantCropsView(){
 //The showStarvedView method
 //Purpose:
 //Parameters:
-//Returns:
+//Returns: 
 
 public static void showStarvedView(){
     
@@ -131,9 +131,9 @@ public static void runCropsView(){
 }
 
 //The displayCropsReportView method
-//Purpose:
-//Parameters:
-//Returns:
+//Purpose: runs the Team5GameProject game
+//Parameters: none
+//Returns: none
 
 public static void displayCropsReportView(){
     
