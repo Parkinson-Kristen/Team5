@@ -1,6 +1,6 @@
 //MainMenuView class - part of the view layer
 //Object of this class is to manage the main menu
-//Author: Team 5 - Jeff and Kristen 
+//Author: Team 5 - Kristen 
 //Last Modified: Feb 22 2018
 //---------------------------
 package byui.cit260.findTheGold.view;
@@ -11,7 +11,7 @@ import byui.cit260.findTheGold.model.*;
 import byui.cit260.findTheGold.Team5GameProject.*;
 import byui.cit260.findTheGold.view.*;
 
-public class MainMenuView {
+public class MainMenuView extends MenuView {
         
     private String mainMenu;
     private int max;
@@ -211,17 +211,16 @@ public void displaySaveGameView(){
 // ----------------------------
 public MainMenuView(){
 
-    mainMenu = "\n" +
+    super("\n" +
                 "*************************************\n" +
                 "* CITY OF AARON: MAIN GAME MENU *\n" +
-                "*************************************\n" +
-                "0 - Game Menu\n" +              
+                "*************************************\n" +            
                 "1 - Start new game\n" +
                 "2 - Get and start a saved game\n" +
                 "3 - Get help on playing the game\n" +
                 "4 - Save game\n" +
-                "5 - Quit game\n";
-    max = 5;
+                "5 - Quit game\n",
+                5);
 }
 
 

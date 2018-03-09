@@ -1,6 +1,6 @@
 //The City of Aaron Game
 //The driver file, contains the main() method
-//Author: Team 5 - Jeff and Kristen 
+//Author: Team 5 - Kristen 
 //Last Modified: Feb 2018
 //---------------------------
 package byui.cit260.findTheGold.model;

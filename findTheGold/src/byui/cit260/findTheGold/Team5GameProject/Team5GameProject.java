@@ -1,6 +1,6 @@
 //The City of Aaron Game
 //The driver file, contains the main() method
-//Author: Team 5 - Jeff and Kristen 
+//Author: Team 5 - Kristen 
 //Last Modified: Feb 2018
 //---------------------------
 package byui.cit260.findTheGold.Team5GameProject;
@@ -55,14 +55,11 @@ public class Team5GameProject {
         String playerOneName = playerOne.getPlayerName();
         
         System.out.println("Name = " + playerOneName);
-        
-        TeamMember.Jeff.getName();
-        TeamMember.Jeff.getTitle();
+       
         TeamMember.Kristen.getName();
         TeamMember.Kristen.getTitle();
         
         System.out.print(TeamMember.Kristen.toString());
-        System.out.print(TeamMember.Jeff.toString());
         
         System.out.println(firstLocation.toString());
         System.out.println(firstData.toString());

@@ -1,6 +1,6 @@
 //CropView class - part of the view layer
 //Object of this class is to manage the crop view
-//Author: Team 5 - Jeff and Kristen 
+//Author: Team 5 - Kristen 
 //Last Modified: Feb 2018
 //---------------------------
 package byui.cit260.findTheGold.view;
@@ -124,6 +124,9 @@ public static void showStarvedView(){
 public static void runCropsView(){
     //call the buyLandView() method
     buyLandView();
+    sellLandView();
+    plantCropsView();
+    payOfferingView();
     
     //add calls to the other crop view methods
     //as they are written

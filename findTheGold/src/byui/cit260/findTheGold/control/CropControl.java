@@ -1,7 +1,7 @@
-//The City of Aaron Game
-//The driver file, contains the main() method
-//Author: Team 5 - Jeff and Kristen 
-//Last Modified: Feb 2018
+//CropControl class - part of the control layer
+//Object of this class is to manage the crop control
+//Author: Team 5 - Kristen 
+//Last Modified: March 1 2018
 //---------------------------
 package byui.cit260.findTheGold.control;
 
@@ -12,8 +12,14 @@ import java.util.Random;
 public class CropControl {
     
 //contants
+private static final int ACRES_PER_BUSHEL = 2;
+private static final int PEOPLE_PER_ACRE = 10;
+private static final int BUSHELS_PER_PERSON = 20;
 private static final int LAND_BASE = 17;
 private static final int LAND_RANGE = 10;
+private static final int YIELD_RANGE = 4;
+private static final int YIELD_BASE = 1;
+
 //Returns/WheatHarvest: a randomly generated number between 2 -4 bushels per 
     //acre for tithes between 8-12%.
 // Returns/WheatHarvest: a randomly generated number between 1-3 bushels per 

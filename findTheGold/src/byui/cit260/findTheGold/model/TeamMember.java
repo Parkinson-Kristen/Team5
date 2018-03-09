@@ -14,8 +14,7 @@ import java.util.Objects;
  */
 public enum TeamMember implements Serializable {
     
-    Jeff("Jeff Bryant", "A member of Team-5"),
-    Kristen("Kristen Parkinson", "A member of Team-5");
+    Kristen("Kristen Parkinson", "Now the only member of Team-5");
     
     // class instance variables
     private String name;

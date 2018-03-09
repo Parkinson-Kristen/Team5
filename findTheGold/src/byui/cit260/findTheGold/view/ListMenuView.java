@@ -1,21 +1,19 @@
 //ListMenuView class - part of the view layer
 //Object of this class is to manage the list view
-//Author: Team 5 - Jeff and Kristen 
+//Author: Team 5 - Kristen 
 //Last Modified: Feb 2018
 //---------------------------
 package byui.cit260.findTheGold.view;
 
-import byui.cit260.findTheGold.Team5GameProject.Team5GameProject;
-import byui.cit260.findTheGold.model.CropData;
-import byui.cit260.findTheGold.model.Game;
+import byui.cit260.findTheGold.control.*;
+import byui.cit260.findTheGold.model.*;
+import byui.cit260.findTheGold.Team5GameProject.*;
 import byui.cit260.findTheGold.view.*;
 import java.util.Scanner;
 
 
-public class ListMenuView {
+public class ListMenuView extends MenuView {
   
-    //Create a Scanner object
-    private static Scanner keyboard = new Scanner(System.in);
     
     //Get reference to the Game object and the Crops object
     private static Game theGame = Team5GameProject.getTheGame();
@@ -23,23 +21,10 @@ public class ListMenuView {
     
     private String gameMenu;
     private String listMenu;
+    private String mainMenu;
     private int max;
     
-    public void MainMenuView(){
-        
-        
-         listMenu = "\n" +
-                    "*************************************\n" +
-                    "* CITY OF AARON: View/Print a List *\n" +
-                    "*************************************\n" +
-                    "0 - Return to Game Menu\n" +              
-                    "1 - List or view the animals in the storehouse\n" +
-                    "2 - List or view the tools in the storehouse\n" +
-                    "3 - List or view the provisions in the storehouse\n" +
-                    "4 - List or view the authors of this game\n";  
-         
-         max = 0;
-    }
+    Scanner keyboard = new Scanner(System.in);
     
     public void displayMainMenuView(){
         int menuOption;    
@@ -58,7 +43,7 @@ public class ListMenuView {
     }
 
     
-    public int getMenuOption(){
+    @Override public int getMenuOption(){
        //declare a variable to hold user's input
         int userInput;
     
@@ -81,7 +66,7 @@ public class ListMenuView {
     }
     
     
-    public void doAction(int action){
+    @Override public void doAction(int action){
       
         switch(action){
                 case 0:
@@ -123,5 +108,18 @@ public class ListMenuView {
         theGame.getTeam();
                 
     }
+    
+    public ListMenuView(){ 
+         super("\n" +
+                    "*************************************\n" +
+                    "* CITY OF AARON: View/Print a List *\n" +
+                    "*************************************\n" +            
+                    "1 - List or view the animals in the storehouse\n" +
+                    "2 - List or view the tools in the storehouse\n" +
+                    "3 - List or view the provisions in the storehouse\n" +
+                    "4 - List or view the authors of this game\n" +
+                    "5 - Return to the Main menu\n",
+                    5);         
+    }    
     
 }

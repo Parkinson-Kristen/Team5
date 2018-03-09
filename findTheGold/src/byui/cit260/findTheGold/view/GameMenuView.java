@@ -1,6 +1,6 @@
-//GameMenuView class - part of the view layer
-//Object of this class is to manage the game view
-//Author: Team 5 - Jeff and Kristen 
+//CropView class - part of the view layer
+//Object of this class is to manage the crop view
+//Author: Team 5 - Kristen 
 //Last Modified: Feb 2018
 //---------------------------
 package byui.cit260.findTheGold.view;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class GameMenuView {
+public class GameMenuView extends MenuView {
     
     //Create a Scanner object
     private static Scanner keyboard = new Scanner(System.in);
@@ -28,17 +28,16 @@ public class GameMenuView {
     
     public GameMenuView(){
 
-        gameMenu = "\n" +
+        super("\n" +
                     "*************************************\n" +
                     "* CITY OF AARON: MAIN GAME MENU *\n" +
-                    "*************************************\n" +
-                    "0 - Game Menu\n" +              
+                    "*************************************\n" +             
                     "1 - View the Map\n" +
                     "2 - View/Print a list\n" +
                     "3 - Move to a new location\n" +
                     "4 - Manage the Crops\n" +
-                    "5 - Return to the Main menu\n";
-        max = 5;   
+                    "5 - Return to the Main menu\n",
+        5);   
     }
     
     public void displayMainMenuView(){
@@ -80,7 +79,7 @@ public class GameMenuView {
     }
     
     
-    public void doAction(int option){
+    @Override public void doAction(int option){
       
         switch(option)
     {
@@ -98,11 +97,7 @@ public class GameMenuView {
             manageCrops();
             break;
         case 5: //Returns to GameMenuView
-            displayMainMenuView();
-            break;
-        default:
-            System.out.println("\n*** Invalid selection *** Try Again");
-            break;
+            return;        
     }
     }
     
@@ -146,6 +141,7 @@ public class GameMenuView {
                     + "to be paid in tithes and offering?");
             CropControl.payOffering(userInput, theCropData.getWheatInStore(), theCropData);
             
+            CropView.runCropsView();
    
     }
     
