@@ -32,49 +32,6 @@ public class HelpMenuView extends MenuView {
         
         6);
     }
-     // The displayMainMenuView method
-    // Purpose: displays menu, gets user input, and does the selected action
-    // Parameters: none
-    // Returns: none
-    // ===================================    
-    public void displayMenuView()
-    {
-        // executre this loop as long as the selected option is not 5
-        int menuOption = 0;
-        do
-        {
-            // display the menu
-            System.out.println(gameMenu);
-        
-            // get the user's selection
-            menuOption = getMenuOption();
-        
-            // perform the selected action
-            doAction(menuOption);  
-        } while (menuOption != max);
-    }
-    
-    // The getMenuOption method
-    // Purpose: gets the user's input
-    // Parameters: none
-    // Returns: integer - the option selected
-    // ===================================       
-    public int getMenuOption()
-    {
-        int selectedOption = 0;
-        do
-        {
-            // get input from keyboard. It must be in the range 1-5
-            selectedOption = keyboard.nextInt();
-            if(selectedOption < 1 || selectedOption > max)
-            {
-                System.out.println("Incorrect input: option must be between 1 and " + max);
-            }
-            
-        } while (selectedOption < 1 || selectedOption > max);
-        return selectedOption;
-        
-    } 
     
     // The doAction method
     // Purpose: performs the selected action
@@ -115,7 +72,15 @@ public class HelpMenuView extends MenuView {
         System.out.println("\nThe goal of the game is to survive 10 years as ruler.\n" +
                             "You have to decide how much land to buy, how much land\n" +
                             "to sell, how much wheat to feed your people, and how\n" +
-                            "much wheat to plant for the year.\n\n" +
+                            "much wheat to plant for the year. The following will "
+                + "help you in your decisions:"
+                + "* Each person needs at least 20 bushels of grain per year to survive."
+                + "* Each person can farm 10 acres / or each acre needs 10 people to farm it."
+                + "* It takes 2 bushels of grain to plant an acres of land."
+                + "* The market price of grain flucuates."
+                + "* The amount of grain eaten by rats and your harvest are linked"
+                + "to your percentage of offerings.  Blessings may be greater is you"
+                + "are a full tithe payer.\n\n" +
                             "If too many people starve, you will be impeached.\n");
     }
     

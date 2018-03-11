@@ -157,6 +157,18 @@ public class CropControlTest {
     public void testpayOffering1(){
         System.out.println("payOffering");
         CropData theCrops = new CropData();
+        int offeringBushels = 10;
+        int wheatInStore = 50;
+        theCrops.setHarvestAfterOffering(wheatInStore);
+        int expResult = 50;
+        int result = CropControl.payOffering(offeringBushels, wheatInStore, theCrops);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testpayOffering2(){
+        System.out.println("payOffering");
+        CropData theCrops = new CropData();
         int offeringBushels = -1;
         int wheatInStore = 50;
         theCrops.setHarvestAfterOffering(wheatInStore);
@@ -164,6 +176,24 @@ public class CropControlTest {
         int result = CropControl.payOffering(offeringBushels, wheatInStore, theCrops);
         assertEquals(expResult, result);
     }
+    
+    @Test
+    public void testpayOffering3(){
+        System.out.println("payOffering");
+        CropData theCrops = new CropData();
+        int offeringBushels = 101;
+        int wheatInStore = 50;
+        theCrops.setHarvestAfterOffering(wheatInStore);
+        int expResult = -1;
+        int result = CropControl.payOffering(offeringBushels, wheatInStore, theCrops);
+        assertEquals(expResult, result);
+    }
+    
+    
+    
+    
+    
+    
     
     
 }

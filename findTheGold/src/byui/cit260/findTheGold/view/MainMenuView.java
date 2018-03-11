@@ -17,60 +17,7 @@ public class MainMenuView extends MenuView {
     private int max;
     
     Scanner keyboard = new Scanner(System.in);    
-    
-    
-  
-
-//The displayMenuView method
-//Purpose: displays the menu, gets the user's input, and does the 
-    //selected action
-//Parameters: none
-//Returns: none
-//-------------------------------------------------------------------
-public void displayMainMenuView(){    
-    
-    int menuOption;    
-    do    {
-       //Display the menu
-       System.out.println(mainMenu); 
-
-       //Prompt the user and get the user's input
-       menuOption = getMenuOption();
-       
-       //Perform the desired action
-       doAction(menuOption);
-       
-       //Determine and display the next view
-   } while (menuOption!= max);
-    } 
-
-//The get MenuOption method
-//Purpose: gets the user's input
-//Parameters: none
-//Returns: integer - the option selected
-//----------------------------------------
-public int getMenuOption(){
-
-    //declare a variable to hold user's input
-    int userInput;
-    
-    //begin loop
-    do
-    {
-        //get user input from the keyboard
-        userInput = keyboard.nextInt();
-        
-        //if it is not a valid value, output an error message
-        if(userInput < 1 || userInput > max)
-        {
-            System.out.println("\noption must be between 1 and " + max);
-        }
-    //loop back to the top if input was not valid
-    }while(userInput < 1 || userInput > max);
-    
-        //return the value input by the user
-        return userInput;   
-}
+   
 
 //The doAction method
 //Purpose: performs the selected action
@@ -148,11 +95,14 @@ public void startNewGame(){
     theGame.setPlayer(thePlayer);
     
     //Display a welcome message.
-    System.out.println("\nWelcome " +name+ " have fun!");
+    System.out.println("\nWelcome High Priest" +name+ ". Rule wisely and you"
+            + "will be showered with praise at the end of your term.  Rule"
+            + "poorly and you will be thrown out of the city for the tower"
+            + "wall!");
     
     //Display the Game menu.
     GameMenuView gameMenu = new GameMenuView();
-    gameMenu.displayMainMenuView();
+    gameMenu.displayMenu();
     
     //Create the CropData object,
     //initialize it and save a reference to it in the Game.
@@ -222,8 +172,6 @@ public MainMenuView(){
                 "5 - Quit game\n",
                 5);
 }
-
-
 
 
 

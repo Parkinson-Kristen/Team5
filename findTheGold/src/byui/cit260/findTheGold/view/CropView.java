@@ -46,7 +46,6 @@ public static void buyLandView(){
 //Purpose: interface with the user input to sell land
 //Parameters: none
 //Returns: none
-
 public static void sellLandView(){
   
     //Get the cost of land for this round.
@@ -68,7 +67,6 @@ public static void sellLandView(){
 //Purpose:
 //Parameters:
 //Returns:
-
 public static void payOfferingView(){
      
     int offering = keyboard.nextInt();
@@ -90,29 +88,54 @@ public static void payOfferingView(){
 
 
 //The feedPeopleView method
-//Purpose:
+//Purpose: promts the user to decide how much grain to reserve for feeding the people
 //Parameters: 
 //Returns:
-
 public static void feedPeopleView(){
+   
+    //Propmpt the user to enter the following:
+    System.out.format("The amount of food needed to feed 1 person is 20 bushels "
+            + "of grain./%n");
+    System.out.print("\nHow many bushls whoud you like to set aside to feed your"
+            + " your people?");
     
+    //Get the user's input and save it
+    int wheatForPeople;
+    wheatForPeople = keyboard.nextInt();
+    
+    //Call the feePeople() method in the control layer to feed people
+    CropControl.feedPeople(wheatForPeople, wheatForPeople, theCropData);
 }
 
 //The plantCropsView method
-//Purpose: interface 
+//Purpose: propmts user to choose how much grain to plant
 //Parameter:
 //Returns:
-
 public static void plantCropsView(){
     
+    //Prompt the user to enter the following:
+    System.out.format("It takes 2 bushels of grain to plant 1 acres of land/%n");
+    System.out.print("\nHow many bushels do you wish to use for planting?");
+    
+    //Get the user's input and save it
+    int amountToPlant;
+    amountToPlant = keyboard.nextInt();
+        
+    CropControl.plantCrops(amountToPlant, amountToPlant, theCropData);
 }
 
 //The showStarvedView method
 //Purpose:
 //Parameters:
 //Returns:
-
 public static void showStarvedView(){
+    
+     //Get number of people who starved for this round.
+    int numStarved = CropControl.calcStarved(theCropData.getPopulation(),theCropData.getWheatForPeople());
+    
+     //Display
+    System.out.print("\nNumber of people who starved this round is "+ numStarved +". ");
+    
     
 }
 
@@ -120,7 +143,6 @@ public static void showStarvedView(){
 //Purpose: runs the Team5GameProject game
 //Parameters: none
 //Returns: none
-
 public static void runCropsView(){
     //call the buyLandView() method
     buyLandView();
@@ -137,9 +159,25 @@ public static void runCropsView(){
 //Purpose:
 //Parameters:
 //Returns:
-
 public static void displayCropsReportView(){
+    //calls the CropData in the model View
+    //Create the CropData object,
+    //initialize it and save a reference to it in the Game.
+    CropData theCrops = new CropData();
+    theCrops.getYear();
+    theCrops.getPopulation();
+    theCrops.getNewPeople();
+    theCrops.getCropYield();
+    theCrops.getNumberWhoDied();
+    theCrops.getOffering();
+    theCrops.getWheatInStore();
+    theCrops.getAcresOwned();
+    theCrops.getAcresPlanted();
+    theCrops.getHarvest();
+    theCrops.getOfferingBushels();
+    theCrops.getAcresPlanted();
     
+    theGame.setCropData(theCrops);; 
 }
 
     

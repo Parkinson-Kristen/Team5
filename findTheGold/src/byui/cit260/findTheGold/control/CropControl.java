@@ -1,7 +1,7 @@
 //CropControl class - part of the control layer
 //Object of this class is to manage the crop control
 //Author: Team 5 - Kristen 
-//Last Modified: March 1 2018
+//Last Modified: March 10 2018
 //---------------------------
 package byui.cit260.findTheGold.control;
 
@@ -17,8 +17,12 @@ private static final int PEOPLE_PER_ACRE = 10;
 private static final int BUSHELS_PER_PERSON = 20;
 private static final int LAND_BASE = 17;
 private static final int LAND_RANGE = 10;
-private static final int YIELD_RANGE = 4;
+private static final int YIELD_RANGE = 3;
 private static final int YIELD_BASE = 1;
+private static final int TITHE_RANGE = 7;
+private static final int TITHE_BASE = 3;
+private static final int GROWTH_RANGE = 5;
+private static final int GROWTH_BASE = 1;
 
 //Returns/WheatHarvest: a randomly generated number between 2 -4 bushels per 
     //acre for tithes between 8-12%.
@@ -136,58 +140,45 @@ public static int feedPeople(int wheatInStore, int peopleFed, CropData cropData)
             
     //wheat used to feed people minus wheatInStore = new wheatInStore amount
     //storeWheat = storeWheat – (population * bushelsPerPerson), return storeWheat
-    
     wheatInStore = wheatInStore - peopleFed;
+    cropData.setWheatInStore(wheatInStore);
 
     //return wheatAvailable
-    return wheatInStore;
-    
-    
+    return wheatInStore;   
 }
 
 // The plantCrops method
 // Purpose: Plant Crops
-// Parameters: Enter the number of acres that you wish to plant. You can plant 
-//    2 acres with one bushel of wheat.
-// Pre-conditions: The bushels of wheat must be positive number that is less than 
-//    or equal to the total amount of land that the city owns. The amount of wheat 
-//    must be less than or equal to the total amount of wheat in storage. 
-// Check to make sure that the value is positive. If it is not, show a message 
-//    and ask the user to enter the value again.
-// Check to make sure the city has this much land. If not, show a message and 
-//    ask the user to enter a new value.
-// Check to make sure that the city has enough wheat in storage to plant this 
-//    many acres (You can plant 2 acres with one bushel of wheat). If not, show 
-//    a message and ask the user to enter a new value.
-// Returns: The number of bushels required to plant the crops subtracted from 
-//    the amount of wheat in storage.
+// Parameters: wheat in 
+// Pre-conditions: 
+//      It takes 2 bushels to plant 1 acre
+//      It takes 10 people to farm 1 acres of land
+//      Cannot plant more acres than owned
 // Returns: Number of acres that have been planted.
 public static int plantCrops(int wheatToPlant, int acresToPlant, CropData cropData){
    
-    //If acresToPlant < 1, return -1
-    if (acresToPlant < 1)
+    //If acresToPlant < 0, return -1
+    if (acresToPlant < 0)
         return -1;
     
-    int acresAvailable = cropData.getAcresOwned();
-    
-    int wheatAvailable = cropData.getWheatInStore();
-    
-    //If acresToPlant > acresAvailable, return -1
-    if (acresToPlant > acresAvailable) 
+    int acresOwned = cropData.getAcresOwned();
+    if (acresToPlant > acresOwned)
         return -1;
     
-    //If wheatToPlant > wheatAvailable, return -1
-    if (wheatToPlant > wheatAvailable) 
+    int wheat = cropData.getWheatInStore();
+    if (acresToPlant > wheat / ACRES_PER_BUSHEL)
         return -1;
-
-    //wheatAvailable = acresToPlant / 2
-    wheatAvailable = acresToPlant / 2;
-
-    //wheatAvailable = wheatAvailable – wheatToPlant
-    wheatAvailable = (wheatAvailable - wheatToPlant);
-
-    //return wheatAvailable
-    return wheatAvailable;
+    
+    //enough people to tend the crops? if not, return -1
+    int population = cropData.getPopulation();
+    if(acresToPlant > population * PEOPLE_PER_ACRE)
+        return -1;
+    
+    //setAcresToPlant = acresOwned * (wheat * 2)
+    cropData.setAcresPlanted(acresToPlant);
+    
+    //return amount of wheat left in store
+    return wheat;
 }
 
 
@@ -221,11 +212,36 @@ public static int setOffering(int offering, CropData cropData){
 //Parameters: none
 //Returns: the land cost
 public static int calcLandCost(){
+    
     int landPrice = random.nextInt(LAND_RANGE) + LAND_BASE;
     return landPrice;
         
 }
-        
+    
+//harvestCrops()method
+//Purpose: Caluclate a random crop yeild between 1 and 4 bushels/acre
+//Parameters: none
+//Returns: cropYeild
+public static int harvestCrops(int acresPlanted, CropData cropData){
+    
+    int offering = cropData.getOffering();
+    int harvestPerAcre = 0;
+    
+    if (offering < 8){
+        harvestPerAcre = random.nextInt(2) + 1;
+    }
+    else if (offering >= 8 && offering <= 12){
+        harvestPerAcre = random.nextInt(2) + 2;
+    }
+    else if (offering > 12){
+        harvestPerAcre = random.nextInt(3) + 2;
+    }
+    
+    cropData.setCropYield(harvestPerAcre * acresPlanted);
+    
+    return cropData.getCropYield();
+}
+
 
 //The payOffering method
 //Purpose: subtract set offering from 
@@ -249,24 +265,79 @@ public static int payOffering(int offeringBushels, int wheatInStore, CropData cr
         
     }
 
+//storeWheat()method
+//Purpose: find amount of wheatInStore after subtracting offering from harvest
+//Parameters: none
+//Returns: wheatInStore
+public static int storeWheat(int harvest, int harvestAfterOffering, CropData cropData){
+    
+    int wheatInStore = harvest - harvestAfterOffering;
+    
+    return wheatInStore;
+}
+
 
 //The calcEatenByRats method
 //Purpose: wheat eaten by rats from wheat in store
 //Parameters: Offering percentage
 //Returns: what in store
-public static int calcEatenByRats(int offering, int wheatInStore, CropData cropData){
-    return 0;
+public static int calcEatenByRats(int wheatInStore, CropData cropData){
+    
+    int offering = cropData.getOffering();
+    int eatenByRats = 0;
+    
+    if (offering < 8){
+        eatenByRats = random.nextInt(4) + 6;
+    }
+    else if (offering >= 8 && offering <= 12){
+        eatenByRats = random.nextInt(4) + 3;
+    }
+    else if (offering > 12){
+        eatenByRats = random.nextInt(2) + 3;
+    }
+    
+    int wheatinStore = wheatInStore * (eatenByRats/100);
+    cropData.setWheatInStore(wheatinStore);
+    
+    cropData.setEatenByRats(eatenByRats);
+    return cropData.getEatenByRats();
         
     }
+
+//growPopulation()method
+//Purpose: Caluclate a random population growth between 1 and 5 percent of 
+    //current population
+//Parameters: none
+//Returns: the land cost
+public static int growPopulation(int population, CropData cropData){
+   
+    int percentageGrowth = random.nextInt(GROWTH_RANGE) + GROWTH_BASE;
+    
+    int newPeople = (percentageGrowth/100) * population;
+    
+    population = population + newPeople;
+    
+    return population;
+}
 
 
 //The calcStarved method
 //Purpose: to subtract the number of people who starved due to lack of wheat
-    //available in store - need 3 bushels of wheat in store to feed 1 person
+    //available in store - need 20 bushels of wheat in store to feed 1 person
 //Parameters
 //Returns:
-public static int calcStarved(int population, int peopleFed, CropData cropData){
-    return 0;
+public static int calcStarved(int population, int wheatForPeople){
+    
+    int peopleFed = wheatForPeople / 20;
+    int numStarved;
+    // if peopleFed < population, return -1
+    if (peopleFed >= population){
+        numStarved = 0;
+    }else {
+        numStarved = population - peopleFed;
+        population = population - numStarved;
+        }
+     return population;
         
     }
     

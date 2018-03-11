@@ -1,13 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//CropData class - part of the model layer
+//Object of this class is to manage the crop data
+//Author: Team 5 - Kristen 
+//Last Modified: March 10 2018
+//---------------------------
 package byui.cit260.findTheGold.model;
 
 import java.io.Serializable;
-
-//Author: Team 5 - Jeff and Kristen
 
 public class CropData implements Serializable{
     
