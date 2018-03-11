@@ -19,7 +19,7 @@ public class Team5GameProject {
     //runs the main menu
     public static void main(String[]args)
     {   
-        Player playerOne = new Player();
+      /*  Player playerOne = new Player();
         
         Location firstLocation = new Location();
         CropData firstData = new CropData();
@@ -46,13 +46,13 @@ public class Team5GameProject {
         firstData.setEatenByRats(0);
         firstData.setWheatForPeople(3);
         secondData.setNumber(1);
-        firstItem.setName("Name");
         
               
        
         System.out.println(playerOne.toString());
         
         String playerOneName = playerOne.getPlayerName();
+        firstItem.setName(playerOneName);
         
         System.out.println("Name = " + playerOneName);
        
@@ -65,9 +65,9 @@ public class Team5GameProject {
         System.out.println(firstData.toString());
         System.out.println(firstItem.toString());
         Game theGame = new Game();
-       
+       */
         MainMenuView mmv = new MainMenuView();
-        mmv.displayMainMenuView();
+        mmv.displayMenu();
     }
     public static Game getTheGame(){
         return theGame;
