@@ -161,7 +161,7 @@ public class CropControlTest {
         int wheatInStore = 50;
         theCrops.setHarvestAfterOffering(wheatInStore);
         int expResult = 50;
-        int result = CropControl.payOffering(offeringBushels, wheatInStore, theCrops);
+        int result = CropControl.payOffering(offeringBushels, theCrops);
         assertEquals(expResult, result);
     }
     
@@ -173,7 +173,7 @@ public class CropControlTest {
         int wheatInStore = 50;
         theCrops.setHarvestAfterOffering(wheatInStore);
         int expResult = -1;
-        int result = CropControl.payOffering(offeringBushels, wheatInStore, theCrops);
+        int result = CropControl.payOffering(offeringBushels, theCrops);
         assertEquals(expResult, result);
     }
     
@@ -185,7 +185,7 @@ public class CropControlTest {
         int wheatInStore = 50;
         theCrops.setHarvestAfterOffering(wheatInStore);
         int expResult = -1;
-        int result = CropControl.payOffering(offeringBushels, wheatInStore, theCrops);
+        int result = CropControl.payOffering(offeringBushels, theCrops);
         assertEquals(expResult, result);
     }
     

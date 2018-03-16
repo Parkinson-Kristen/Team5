@@ -48,19 +48,30 @@ public class GameMenuView extends MenuView {
         case 1://Displays writen details about the game and location
             viewMap();
             break;
-        case 2: //Provides the user with a set of list options
-            displayMenu();
+        case 2://Display view a list
+            viewList();
             break;
-        case 3://Hints displayed on ways to win the game.
+        case 3: //Provides the user with a option to move to new locations
             moveToNewLocation();
             break;
-        case 4: //displays steps outlining "Play of the Game".  User story
+        case 4://displays steps outlining "Play of the Game".  User story
             //displayed goes step by step
             manageCrops();
             break;
-        case 5: //Returns to GameMenuView
-            return;        
+        case 5: 
+            displayMenu();
+            break;        
     }
+    }
+    
+    //The viewList() method
+    //Purpose: Create a ViewList object and calls its displayMenuView() method
+    //Parameters: none
+    //Returns: none
+    public static void viewList(){
+        
+        ListMenuView lv = new ListMenuView();
+        lv.displayMenu();
     }
     
     public static void viewMap(){
@@ -76,37 +87,47 @@ public class GameMenuView extends MenuView {
     public static void manageCrops(){
        
     //Display a welcome message.
-    System.out.println("\nWelcome High Priest. You will serve for a term of 10 years"
-            + " or until you are thrown out of the city for mismanagement.");    
+    System.out.println("\nWelcome Supreme High Ruler. You will serve for a \n"
+            + "term of 10 years or until you are thrown out of the city for \n"
+            + "mismanagement.");    
    
     //declare a variable to hold user's input
     int userInput;
         
-            System.out.println("\nHow many acres of new land do you wish"
-                    + " to buy?");
-            userInput = keyboard.nextInt();
-            CropControl.buyLand(CropControl.calcLandCost(), userInput, theCropData);
+            //System.out.println("\nHow many acres of new land do you wish"
+            //        + " to buy?");
+            CropView.buyLandView();
+            //userInput = keyboard.nextInt();
+            //CropControl.buyLand(CropControl.calcLandCost(), userInput, theCropData);
             
-            System.out.println("\nHow many acres of new land do you wish"
-                    + "to sell?");
-            userInput = keyboard.nextInt();
-            CropControl.sellLand(CropControl.calcLandCost(), userInput, theCropData);
+            //System.out.println("\nHow many acres of new land do you wish"
+            //        + " to sell?");
+            CropView.sellLandView();
+            //userInput = keyboard.nextInt();
+            //CropControl.sellLand(CropControl.calcLandCost(), userInput, theCropData);
             
-            System.out.println("\nHow many bushels of grain do you wish to"
-                    + "give to the people?");
-            userInput = keyboard.nextInt();
-            CropControl.feedPeople(theCropData.getWheatInStore(), userInput, theCropData);
+            //System.out.println("\nHow many bushels of grain do you wish to"
+            //        + " give to the people?");
+            CropView.feedPeopleView();
+            //userInput = keyboard.nextInt();
+           // CropControl.feedPeople(theCropData.getWheatInStore(), userInput, theCropData);
          
-            System.out.println("\nHow many acres of land do you wish to plant?");
-            userInput = keyboard.nextInt();
-            CropControl.plantCrops(theCropData.getWheatInStore(), userInput, theCropData);
+            //System.out.println("\nHow many acres of land do you wish to plant?");
+            //userInput = keyboard.nextInt();
+            CropView.plantCropsView();
+            //CropControl.plantCrops(theCropData.getWheatInStore(), userInput, theCropData);
             
-            System.out.println("\nWhat percentage of the harvest would you like"
-                    + "to be paid in tithes and offering?");
-            userInput = keyboard.nextInt();
-            CropControl.payOffering(userInput, theCropData.getWheatInStore(), theCropData);
+            //System.out.println("\nWhat percentage of the harvest would you like"
+            //        + "to be paid in tithes and offering?");
+            CropView.payOfferingView();
+            //userInput = keyboard.nextInt();
+            //CropControl.payOffering(userInput, theCropData.getWheatInStore(), theCropData);
             
-            CropView.runCropsView();
+            int yearOfReign = theCropData.getYear() +1;
+            theCropData.setYear(yearOfReign);
+            
+            CropView.displayCropsReportView();
+            
    
     }
     

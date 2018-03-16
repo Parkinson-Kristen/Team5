@@ -17,7 +17,11 @@ public class ListItem implements Serializable{
     // class instance variable
     private String name;
     private int number;    
-    public ListItem() {
+    public ListItem(String _name, int _number) {
+        
+        name = _name;
+        number = _number;
+        
     }  
     
         public String getName() {

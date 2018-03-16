@@ -1,17 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//The City of Aaron Game
+//The driver file, contains the main() method
+//Author: Team 5 - Kristen 
+//Last Modified: March 10 2018
+//---------------------------
 package byui.cit260.findTheGold.model;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- *
- * @author kjpar
- */
 public class Location implements Serializable {
     
     // class instance variables

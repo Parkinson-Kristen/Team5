@@ -1,15 +1,21 @@
 //The City of Aaron Game
 //The driver file, contains the main() method
 //Author: Team 5 - Kristen 
-//Last Modified: Feb 2018
+//Last Modified: March 10 2018
 //---------------------------
 package byui.cit260.findTheGold.model;
 
+import byui.cit260.findTheGold.Team5GameProject.Team5GameProject;
+import byui.cit260.findTheGold.control.GameControl;
+import byui.cit260.findTheGold.view.GameMenuView;
+import byui.cit260.findTheGold.model.CropData;
 import java.io.Serializable;
 import java.util.*;
 
 public class Game implements Serializable {
     
+    Scanner keyboard = new Scanner(System.in); 
+      
     // class instance variable
     private Map theMap;
     private Player thePlayer;
@@ -18,10 +24,11 @@ public class Game implements Serializable {
     private ArrayList<ListItem> tools;
     private ArrayList<ListItem> provision;
     private CropData theCrops = null;
+    
     private String name;
     private TeamMember[] team;
     
-    public Game() {
+    public Game() { 
     }
 
     public Map getTheMap() {

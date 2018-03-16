@@ -43,16 +43,25 @@ public class ListMenuView extends MenuView {
     }
 */
 
-    
+    public ListMenuView(){ 
+         super("\n" +
+                    "*************************************\n" +
+                    "* CITY OF AARON: LIST MENU *\n" +
+                    "*************************************\n" +            
+                    "1 - List or view the animals in the storehouse\n" +
+                    "2 - List or view the tools in the storehouse\n" +
+                    "3 - List or view the provisions in the storehouse\n" +
+                    "4 - List or view the authors of this game\n" +
+                    "5 - Return to the Main menu\n",
+                    5);         
+    }    
     
     @Override public void doAction(int action){
       
         switch(action){
-                case 0:
-                displayMenu();
-                break;
                 case 1: //View list of animals in the storehouse
-                    listAnimals(); break;
+                    listAnimals(); 
+                    break;
                 case 2: //View list of tools in the storehouse
                     listTools();
                     break;
@@ -61,6 +70,9 @@ public class ListMenuView extends MenuView {
                     break;
                 case 4: //View list of authors of Team5 game
                     listTeam(); 
+                    break;
+                case 5: //Return to game menu
+                    displayMenu();
                     break;
                 default:
                     System.out.println("\n*** Invalid selection *** Try Again");
@@ -88,17 +100,5 @@ public class ListMenuView extends MenuView {
                 
     }
     
-    public ListMenuView(){ 
-         super("\n" +
-                    "*************************************\n" +
-                    "* CITY OF AARON: View/Print a List *\n" +
-                    "*************************************\n" +            
-                    "1 - List or view the animals in the storehouse\n" +
-                    "2 - List or view the tools in the storehouse\n" +
-                    "3 - List or view the provisions in the storehouse\n" +
-                    "4 - List or view the authors of this game\n" +
-                    "5 - Return to the Main menu\n",
-                    5);         
-    }    
     
 }

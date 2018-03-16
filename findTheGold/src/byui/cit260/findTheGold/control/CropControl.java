@@ -200,9 +200,10 @@ public static int setOffering(int offering, CropData cropData){
    
     int harvest = cropData.getHarvest();
     
-    int percentHarvest = (offering * 100/harvest);
+    int offeringBushels = (offering/100 * harvest);
+    cropData.setOffering(offeringBushels);
 
-    return percentHarvest;
+    return offeringBushels;
 
 }
 
@@ -247,21 +248,15 @@ public static int harvestCrops(int acresPlanted, CropData cropData){
 //Purpose: subtract set offering from 
 //Parameters: set offering
 //Returns: wheat in store after offering
-public static int payOffering(int offeringBushels, int wheatInStore, CropData cropData){
-    
-    // if setOffering < 0, return -1
-    if (offeringBushels < 0) 
-        return -1;
-
-    // if setOffering > 100, return -1
-    if(offeringBushels > 100)
-        return -1;
+public static int payOffering(int offering, CropData cropData){
    
-    int wheat = cropData.getWheatInStore();
+    int wheatInStore = cropData.getWheatInStore();
+	int offeringBushels = CropControl.setOffering(offering, cropData);
     
-    int payOffering = (wheatInStore - offeringBushels);
+    int wheat = (wheatInStore - offeringBushels);
+    cropData.setWheatInStore(wheat);
 
-    return wheatInStore;
+    return wheat;
         
     }
 
@@ -272,6 +267,7 @@ public static int payOffering(int offeringBushels, int wheatInStore, CropData cr
 public static int storeWheat(int harvest, int harvestAfterOffering, CropData cropData){
     
     int wheatInStore = harvest - harvestAfterOffering;
+    cropData.setWheatInStore(wheatInStore);
     
     return wheatInStore;
 }
@@ -316,6 +312,7 @@ public static int growPopulation(int population, CropData cropData){
     int newPeople = (percentageGrowth/100) * population;
     
     population = population + newPeople;
+    cropData.setPopulation(population);
     
     return population;
 }
@@ -326,7 +323,7 @@ public static int growPopulation(int population, CropData cropData){
     //available in store - need 20 bushels of wheat in store to feed 1 person
 //Parameters
 //Returns:
-public static int calcStarved(int population, int wheatForPeople){
+public static int calcStarved(int population, int wheatForPeople, CropData cropData){
     
     int peopleFed = wheatForPeople / 20;
     int numStarved;
@@ -337,6 +334,8 @@ public static int calcStarved(int population, int wheatForPeople){
         numStarved = population - peopleFed;
         population = population - numStarved;
         }
+    
+    cropData.setNumStarved(population);
      return population;
         
     }
