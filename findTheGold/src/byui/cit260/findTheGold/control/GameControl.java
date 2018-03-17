@@ -71,6 +71,10 @@ private static Game theGame;
     //call the createNewGame() method.  Pass the name as a parameter
     GameControl.createNewGame(name);
     GameControl.createCropDataObject();
+    GameControl.createAnimalList();
+    GameControl.createToolList();
+    GameControl.createProvisionList();
+    //GameControl.
     
     //Display initial report for city stats
     CropView.displayCropsReportView();
@@ -156,6 +160,12 @@ private static Game theGame;
             theGame.setProvision(provisions);
 
         }
+    
+    public static void createTeamMemberList(){
+        
+            //theGame.setTeam(TeamMember.Kristen);//TeamMember.
+
+        }    
 
     //The createMap method
     //Purpose: creates the location objects and the map

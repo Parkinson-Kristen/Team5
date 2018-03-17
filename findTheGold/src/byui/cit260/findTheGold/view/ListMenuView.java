@@ -81,22 +81,21 @@ public class ListMenuView extends MenuView {
     }
     
     public void listAnimals(){
-        theGame.getAnimals();
-        
+        ListView.ListAnimals(theGame.getAnimals());       
     }
    
     public void listTools(){
-        theGame.getTools();
+        ListView.ListTools(theGame.getTools()); 
         
     }
     
     public void listProvision(){
-        theGame.getProvision();
+        ListView.ListProvisions(theGame.getProvision()); 
         
     }
     
     public void listTeam(){
-        theGame.getTeam();
+        ListView.ListTeamMembers();
                 
     }
     
