@@ -5,6 +5,7 @@
  */
 package byui.cit260.findTheGold.control;
 
+import byu.cit260.findTheGold.exception.CropException;
 import byui.cit260.findTheGold.model.CropData;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -50,8 +51,18 @@ public class CropControlTest {
         int population = 150;
         theCrops.setPopulation(population);
         CropControl instance = new CropControl();
-        int expResult = 1010; 
-        int result = instance.buyLand(landPrice, acresToPurchase, theCrops);
+        int expResult = 1010;
+        int result;
+        try
+        {
+            instance.buyLand(landPrice, acresToPurchase, theCrops);
+        }
+        catch(CropException e)
+        {
+            System.out.println(e.getMessage());
+            result = -1;
+        }
+        result = theCrops.getWheatInStore();
         assertEquals(expResult, result);  
     }
     @Test
@@ -66,7 +77,17 @@ public class CropControlTest {
         theCrops.setPopulation(population);
         CropControl instance = new CropControl();
         int expResult = -1; //returns -1 because of an negative acresToPurchase
-        int result = instance.buyLand(landPrice, acresToPurchase, theCrops);
+        int result;
+        try
+        {
+            instance.buyLand(landPrice, acresToPurchase, theCrops);
+            result = theCrops.getWheatInStore();
+        }
+        catch(CropException e)
+        {
+            System.out.println(e.getMessage());
+            result = -1;
+        }        
         assertEquals(expResult, result);  
     }
     @Test
@@ -81,7 +102,17 @@ public class CropControlTest {
         theCrops.setPopulation(population);
         CropControl instance = new CropControl();
         int expResult = -1; //returns -1 because not enough wheat to make purchase
-        int result = instance.buyLand(landPrice, acresToPurchase, theCrops);
+        int result;
+        try
+        {
+            instance.buyLand(landPrice, acresToPurchase, theCrops);
+            result = theCrops.getWheatInStore();
+        }
+        catch(CropException e)
+        {
+            System.out.println(e.getMessage());
+            result = -1;
+        }              
         assertEquals(expResult, result);  
     }
 @Test
@@ -96,7 +127,17 @@ public class CropControlTest {
         theCrops.setPopulation(population);
         CropControl instance = new CropControl();
         int expResult = -1; //returns -1 not enough people to tend the land
-        int result = instance.buyLand(landPrice, acresToPurchase, theCrops);
+        int result;
+        try
+        {
+            instance.buyLand(landPrice, acresToPurchase, theCrops);
+            result = theCrops.getWheatInStore();
+        }
+        catch(CropException e)
+        {
+            System.out.println(e.getMessage());
+            result = -1;
+        }                
         assertEquals(expResult, result);  
     }
     @Test
@@ -111,7 +152,17 @@ public class CropControlTest {
         theCrops.setPopulation(population);
         CropControl instance = new CropControl();
         int expResult = 1010; //
-        int result = instance.buyLand(landPrice, acresToPurchase, theCrops);
+        int result;
+        try
+        {
+            instance.buyLand(landPrice, acresToPurchase, theCrops);
+            result = theCrops.getWheatInStore();
+        }
+        catch(CropException e)
+        {
+            System.out.println(e.getMessage());
+            result = -1;
+        }          
         assertEquals(expResult, result);  
     }
 

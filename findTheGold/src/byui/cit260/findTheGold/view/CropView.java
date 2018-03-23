@@ -5,6 +5,7 @@
 //---------------------------
 package byui.cit260.findTheGold.view;
 
+import byu.cit260.findTheGold.exception.CropException;
 import byui.cit260.findTheGold.model.*;
 import byui.cit260.findTheGold.control.*;
 import java.util.Scanner;
@@ -31,15 +32,27 @@ public static void buyLandView(){
     
     //Promt the user to enter the number of acres to buy
     System.out.format("Land is selling for %d bushels per acres. \n", landPrice);
-    System.out.print("\nHow many acres of land do you wish to buy? ");
     
     //Get the user's input and save it
     int acresToPurchase;
-    acresToPurchase = keyboard.nextInt();
-    
-    //Call the buyLnad() method in the control layer to buy the land
-    CropControl.buyLand(landPrice, acresToPurchase, theCropData);
-    
+    boolean paramsNotOkay;
+    do
+    {
+        paramsNotOkay = false;
+        System.out.print("\nHow many acres of land to you wish to buy?");
+        acresToPurchase = keyboard.nextInt();
+        try
+        {
+            //Call the buyLnad() method in the control layer to buy the land
+            CropControl.buyLand(landPrice, acresToPurchase, theCropData);
+        }
+        catch(CropException e)
+        {
+            System.out.println("I am sorry master, I cannot do this");
+            System.out.println(e.getMessage());
+            paramsNotOkay = true;
+        }
+    }while(paramsNotOkay);
 }
   
 //The sellLandView method

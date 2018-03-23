@@ -5,6 +5,7 @@
 //---------------------------
 package byui.cit260.findTheGold.control;
 
+import byu.cit260.findTheGold.exception.CropException;
 import byui.cit260.findTheGold.model.*;
 import byui.cit260.findTheGold.view.*;
 import java.util.Random;
@@ -50,11 +51,11 @@ private static Random random = new Random();
 //      of bushels it costs to purchase land.  Total land cost is bushels 
 //      times number of acres wishing to purchase. 
 
-public static int buyLand(int landPrice, int acresToPurchase, CropData cropData){
+public static void buyLand(int landPrice, int acresToPurchase, CropData cropData) throws CropException{
    
-    //If acresToPurchase < 0, return -1
+    //check parameters - do they meet the contract
     if (acresToPurchase < 0)
-        return -1;
+        throw new CropException("A negative value was input");
     
     int population = cropData.getPopulation();
     
@@ -63,11 +64,11 @@ public static int buyLand(int landPrice, int acresToPurchase, CropData cropData)
     //If (acresToPurchase * landPrice) > storeWheat, return -1
     int wheatInStore = cropData.getWheatInStore();
     if ((landPrice * acresToPurchase) > wheatInStore)
-        return -1;
+        throw new CropException("There is insufficient wheat to buy this much land");
 
     //If Population < acresOwned/10, return -1
     if (population < ((owned + acresToPurchase)/10))
-        return -1;
+        throw new CropException("There are not enough people to till the land");
     
     //land purchase calculation
     int wheat = (landPrice * acresToPurchase);
@@ -83,9 +84,6 @@ public static int buyLand(int landPrice, int acresToPurchase, CropData cropData)
     wheat = cropData.getWheatInStore();
     wheat -= (wheat * acresToPurchase);
     cropData.setWheatInStore(wheat);
-
-     //return acresOwned
-    return owned;
 }
 
 
