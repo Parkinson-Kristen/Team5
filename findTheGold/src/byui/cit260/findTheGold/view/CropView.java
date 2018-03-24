@@ -43,7 +43,7 @@ public static void buyLandView(){
         acresToPurchase = keyboard.nextInt();
         try
         {
-            //Call the buyLnad() method in the control layer to buy the land
+            //Call the buyLand() method in the control layer to buy the land
             CropControl.buyLand(landPrice, acresToPurchase, theCropData);
         }
         catch(CropException e)
@@ -66,15 +66,31 @@ public static void sellLandView(){
     
     //Promt the user to enter the number of acres to sell
     System.out.format("Land is selling for %d bushels per acres. \n", landPrice);
-    System.out.print("\nHow many acres of land do you wish to sell? ");
+    
     
     //Get the user's input and save it
     int acresToSell;
-    acresToSell = keyboard.nextInt();
+    boolean paramsNotOkay;
+    do
+    {
+        paramsNotOkay = false;
+        System.out.print("\nHow many acres of land do you wish to sell? ");
+        acresToSell = keyboard.nextInt();
+        try
+        {
+            //Call the sellLand() methos in the control layer to sell the land
+            CropControl.sellLand(landPrice, acresToSell, theCropData);
+        }
+        catch(CropException e)
+        {
+            System.out.println("Apologies master, this cannot be done.");
+            System.out.println(e.getMessage());
+            paramsNotOkay = true;
+        }
+    }while(paramsNotOkay);
+ }
     
-    //Call the buyLnad() methos in the control layer to buy the land
-    CropControl.sellLand(landPrice, acresToSell, theCropData);  
-}
+ 
 
 //The payOfferingView method
 //Purpose:
@@ -82,7 +98,7 @@ public static void sellLandView(){
 //Returns:
 public static void payOfferingView(){
      
-            //CropControl.payOffering(offeringBushels, wheatInStore, CropData cropData);
+    //CropControl.payOffering(offeringBushels, wheatInStore, CropData cropData);
 
     //Prompt the user to enter the 
     System.out.format("The amount of tithing you offer directly affects your \n"
@@ -109,16 +125,31 @@ public static void feedPeopleView(){
     //Propmpt the user to enter the following:
     System.out.format("The amount of food needed to feed 1 person is 20 bushels \n"
             + "of grain. \n");
-    System.out.print("\nHow many bushls whoud you like to set aside to feed your \n"
-            + " your people? ");
+    
     
     //Get the user's input and save it
     int wheatForPeople;
-    wheatForPeople = keyboard.nextInt();
-    
-    //Call the feePeople() method in the control layer to feed people
-    CropControl.feedPeople(wheatForPeople, wheatForPeople, theCropData);
+    boolean paramsNotOkay;
+    do
+    {
+        paramsNotOkay = false;
+        System.out.print("\nHow many bushls whoud you like to set aside to feed your \n"
+            + " your people? ");
+        wheatForPeople = keyboard.nextInt();
+        try
+        {
+         //Call the feePeople() method in the control layer to feed people
+        CropControl.feedPeople(wheatForPeople, wheatForPeople, theCropData);   
+        }
+        catch(CropException e)
+        {
+            System.out.println("Apologies master, this cannot be done.");
+            System.out.println(e.getMessage());
+            paramsNotOkay = true;
+        }
+    }while(paramsNotOkay);
 }
+   
 
 //The plantCropsView method
 //Purpose: propmts user to choose how much grain to plant
@@ -128,14 +159,32 @@ public static void plantCropsView(){
     
     //Prompt the user to enter the following:
     System.out.format("It takes 2 bushels of grain to plant 1 acres of land \n");
-    System.out.print("\nHow many bushels do you wish to use for planting? ");
+    
     
     //Get the user's input and save it
     int amountToPlant;
-    amountToPlant = keyboard.nextInt();
-        
-    CropControl.plantCrops(amountToPlant, amountToPlant, theCropData);
+    boolean paramsNotOkay;
+    do
+    {
+        paramsNotOkay = false;
+        System.out.print("\nHow many bushels do you wish to use for planting? ");
+        amountToPlant = keyboard.nextInt();
+        try
+        {
+            //Call the plantCrops() method in the control layer to plant crops
+            CropControl.plantCrops(amountToPlant, amountToPlant, theCropData);  
+        }
+        catch(CropException e)
+        {
+            System.out.println("Apologies master, this cannot be done.");
+            System.out.println(e.getMessage());
+            paramsNotOkay = true;
+        }
+    }while(paramsNotOkay);   
 }
+
+
+
 
 //The showStarvedView method
 //Purpose:

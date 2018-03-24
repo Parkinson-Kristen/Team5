@@ -32,7 +32,17 @@ public class CropControlTest {
         int acresToSell = 10;
         CropControl instance = new CropControl();
         int expResult = 2790;
-        int result = instance.sellLand(landPrice, acresToSell, theCrops);
+        int result;
+        try
+        {
+            instance.sellLand(landPrice, acresToSell, theCrops);
+        }
+        catch (CropException e)
+        {
+            System.out.println(e.getMessage());
+            result = -1;
+        }
+        result = theCrops.getAcresOwned();
         assertEquals(expResult, result);
         
     }
@@ -56,13 +66,14 @@ public class CropControlTest {
         try
         {
             instance.buyLand(landPrice, acresToPurchase, theCrops);
+            result = theCrops.getAcresOwned();
         }
         catch(CropException e)
         {
             System.out.println(e.getMessage());
             result = -1;
         }
-        result = theCrops.getWheatInStore();
+        
         assertEquals(expResult, result);  
     }
     @Test
@@ -81,7 +92,7 @@ public class CropControlTest {
         try
         {
             instance.buyLand(landPrice, acresToPurchase, theCrops);
-            result = theCrops.getWheatInStore();
+            result = theCrops.getAcresOwned();
         }
         catch(CropException e)
         {
@@ -106,7 +117,7 @@ public class CropControlTest {
         try
         {
             instance.buyLand(landPrice, acresToPurchase, theCrops);
-            result = theCrops.getWheatInStore();
+            result = theCrops.getAcresOwned();
         }
         catch(CropException e)
         {
@@ -131,7 +142,7 @@ public class CropControlTest {
         try
         {
             instance.buyLand(landPrice, acresToPurchase, theCrops);
-            result = theCrops.getWheatInStore();
+            result = theCrops.getAcresOwned();
         }
         catch(CropException e)
         {
@@ -156,7 +167,7 @@ public class CropControlTest {
         try
         {
             instance.buyLand(landPrice, acresToPurchase, theCrops);
-            result = theCrops.getWheatInStore();
+            result = theCrops.getAcresOwned();
         }
         catch(CropException e)
         {
@@ -177,7 +188,17 @@ public class CropControlTest {
         int harvest = 50;
         theCrops.setHarvest(harvest);
         int expResult = 10;
-        int result = CropControl.setOffering(offering, theCrops);
+        int result;
+        try
+        {
+            CropControl.setOffering(offering, theCrops);
+            result = theCrops.getOfferingBushels();
+        }
+        catch(CropException e)
+        {
+            System.out.println(e.getMessage());
+            result = -1;
+        }
         assertEquals(expResult, result);
     }
 @Test
@@ -188,7 +209,17 @@ public class CropControlTest {
         int harvest = 50;
         theCrops.setHarvest(harvest);
         int expResult = -1;
-        int result = CropControl.setOffering(offering, theCrops);
+        int result;
+        try
+        {
+            CropControl.setOffering(offering, theCrops);
+            result = theCrops.getOffering();
+        }
+        catch(CropException e)
+        {
+            System.out.println(e.getMessage());
+            result = -1;
+        }
         assertEquals(expResult, result);
     }
     
@@ -200,7 +231,17 @@ public class CropControlTest {
         int harvest = 50;
         theCrops.setHarvest(harvest);
         int expResult = -1;
-        int result = CropControl.setOffering(offering, theCrops);
+       int result;
+        try
+        {
+            CropControl.setOffering(offering, theCrops);
+            result = theCrops.getOffering();
+        }
+        catch(CropException e)
+        {
+            System.out.println(e.getMessage());
+            result = -1;
+        }
         assertEquals(expResult, result);
     }
     

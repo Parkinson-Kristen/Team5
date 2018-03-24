@@ -9,6 +9,8 @@ import byu.cit260.findTheGold.exception.CropException;
 import byui.cit260.findTheGold.model.*;
 import byui.cit260.findTheGold.view.*;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CropControl {
     
@@ -94,16 +96,17 @@ public static void buyLand(int landPrice, int acresToPurchase, CropData cropData
 //Returns: the number of acres owned after the sale
 //Precondictions: acres to sell must be positive and  <= acresOwned
 
-public static int sellLand(int landPrice, int acresToSell, CropData cropData){
+public static void sellLand(int landPrice, int acresToSell, CropData cropData)throws CropException{
 
     //if acresToSell < 0, return -1
     if(acresToSell < 0)
-        return -1;
+        throw new CropException("A negative value was input");
 
     //if acresToSell > acresOwned, return -1
     int owned = cropData.getAcresOwned();
     if(acresToSell > owned)
-        return -1;
+        throw new CropException("You do not own this many acres, please select how many"
+                + "acres you would like to sell out of the acres that you currently own");
 
     //acresOwned = acresOwned - acresToSell
     owned -= acresToSell;
@@ -114,8 +117,6 @@ public static int sellLand(int landPrice, int acresToSell, CropData cropData){
     wheat += (acresToSell * landPrice);
     cropData.setWheatInStore(wheat);
 
-    //return acresOwned
-    return owned;
 } 
 
 
@@ -123,14 +124,15 @@ public static int sellLand(int landPrice, int acresToSell, CropData cropData){
 //Purpose: set aside wheat to feed the people
 //Parameters: wheat in store must be greater than wheat needed to feed people
 //Return: wheat in store after feeding people
-public static int feedPeople(int wheatInStore, int peopleFed, CropData cropData){
+public static void feedPeople(int wheatInStore, int peopleFed, CropData cropData)throws CropException{
 
     //bushelsPerPerson = wheat * 20 Bushels to feed 1 
     int bushelsPerPerson = wheatInStore * 20;
     
     //If wheat in store < population * bushelsPerPerson, return -1
     if (wheatInStore < cropData.getPopulation() * bushelsPerPerson)
-        return -1;
+        throw new CropException("You do not have enough wheat in store to feed the"
+                + " citizens you have requested.");
 
     //setPeopleFed = poulation * (wheat * 20)
     peopleFed = (cropData.getPopulation() * bushelsPerPerson);
@@ -140,9 +142,7 @@ public static int feedPeople(int wheatInStore, int peopleFed, CropData cropData)
     //storeWheat = storeWheat – (population * bushelsPerPerson), return storeWheat
     wheatInStore = wheatInStore - peopleFed;
     cropData.setWheatInStore(wheatInStore);
-
-    //return wheatAvailable
-    return wheatInStore;   
+  
 }
 
 // The plantCrops method
@@ -153,30 +153,32 @@ public static int feedPeople(int wheatInStore, int peopleFed, CropData cropData)
 //      It takes 10 people to farm 1 acres of land
 //      Cannot plant more acres than owned
 // Returns: Number of acres that have been planted.
-public static int plantCrops(int wheatToPlant, int acresToPlant, CropData cropData){
+public static void plantCrops(int wheatToPlant, int acresToPlant, CropData cropData)throws CropException{
    
     //If acresToPlant < 0, return -1
     if (acresToPlant < 0)
-        return -1;
+        throw new CropException("A negative value was input");
     
     int acresOwned = cropData.getAcresOwned();
     if (acresToPlant > acresOwned)
-        return -1;
+        throw new CropException("Sorry master, it would be unwise to allocate"
+                + "wheat for planting fields that you do not own.");
     
     int wheat = cropData.getWheatInStore();
     if (acresToPlant > wheat / ACRES_PER_BUSHEL)
-        return -1;
+        throw new CropException("Master, you do not have the required wheat to"
+                + "plant your requested acerage.");
     
     //enough people to tend the crops? if not, return -1
     int population = cropData.getPopulation();
     if(acresToPlant > population * PEOPLE_PER_ACRE)
-        return -1;
+        throw new CropException("Master, sadly our fellow countrymen can only"
+                + "manage 10 acres per person.  We do not have the manpower.");
     
     //setAcresToPlant = acresOwned * (wheat * 2)
     cropData.setAcresPlanted(acresToPlant);
     
-    //return amount of wheat left in store
-    return wheat;
+   
 }
 
 
@@ -186,22 +188,22 @@ public static int plantCrops(int wheatToPlant, int acresToPlant, CropData cropDa
 // Pre-conditions: tithes must be in the positive
 //  and <=0 
 //  and >= 100
-public static int setOffering(int offering, CropData cropData){
+public static void setOffering(int offering, CropData cropData)throws CropException{
    
     // if setOffering < 0, return -1
     if (offering < 0) 
-        return -1;
+        throw new CropException("A negative value was input.");
 
     // if setOffering > 100, return -1
     if(offering > 100)
-        return -1;
+        throw new CropException("Ah Master, you are far too generous.  May I "
+                + "humbly suggest a more modest tithe range of 8 - 12%.");
    
     int harvest = cropData.getHarvest();
     
     int offeringBushels = (offering/100 * harvest);
     cropData.setOffering(offeringBushels);
 
-    return offeringBushels;
 
 }
 
@@ -247,14 +249,20 @@ public static int harvestCrops(int acresPlanted, CropData cropData){
 //Parameters: set offering
 //Returns: wheat in store after offering
 public static int payOffering(int offering, CropData cropData){
-   
+       
     int wheatInStore = cropData.getWheatInStore();
-	int offeringBushels = CropControl.setOffering(offering, cropData);
-    
-    int wheat = (wheatInStore - offeringBushels);
-    cropData.setWheatInStore(wheat);
-
-    return wheat;
+    try {
+        CropControl.setOffering(offering, cropData);
+        int offeringBushels = cropData.getOffering();
+        int wheat = (wheatInStore - offeringBushels);
+        cropData.setWheatInStore(wheat); 
+        return wheat;
+    }
+    catch(CropException e)
+        {
+            System.out.println(e.getMessage());
+            return -1;
+        }          
         
     }
 
