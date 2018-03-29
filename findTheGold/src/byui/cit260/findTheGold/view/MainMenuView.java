@@ -80,16 +80,49 @@ private void startNewGame(){
     GameControl gameRef = new GameControl();
     gameRef.startNewGame();  
 }
+
+
+
 //The startSavedGame method
-//Purpose: starts saved the game
+//Purpose: loads a saved game object from disk and start the game
 //Parameters: none
 //Returns: none
 //-----------------------
 public void startSavedGame(){
     
+    String filePath;
+    
+    //prompt user and got a file path
+    System.out.println("\n\nEnter the file path where you want to load the game from:");
+    keyboard.nextLine(); //this gets rid of the newline left by getMenuOption()
+    filePath = keyboard.nextLine();
+    
+    //calls the getSavedGame() method in the GameControl class to load the game
+    GameControl.getSavedGame(filePath);
+    
+    //display the game menue for the loaded game
+    GameMenuView gmv = new GameMenuView();
+    gmv.displayMenu();
     System.out.println("\nStart saved game option selected.");
 }
 
+public void saveGameToFile(){
+    
+    String filePath;
+    
+    //prompt user and got a file path
+    System.out.println("\n\nEnter the file path where you want to save the game:");
+    //keyboard.nextLine(); //this gets rid of the newline left by getMenuOption()
+    filePath = keyboard.nextLine();
+    
+    //calls the getSavedGame() method in the GameControl class to load the game
+    GameControl.saveAGame(filePath);
+    
+    //display the game menue for the loaded game
+    GameMenuView gmv = new GameMenuView();
+    gmv.displayMenu();
+    System.out.println("\nStart saved game option selected.");
+}
 //The displayHelpMenuView method
 //Purpose: displays the help menu
 //Parameters: none
@@ -108,6 +141,8 @@ public void displayHelpMenuView(){
 public void displaySaveGameView(){
     
     System.out.println("\nDisplay Save Game View.");
+    saveGameToFile();
+    
 }
 
     

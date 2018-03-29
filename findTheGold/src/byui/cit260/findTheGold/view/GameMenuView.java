@@ -7,6 +7,7 @@ package byui.cit260.findTheGold.view;
 
 import byui.cit260.findTheGold.Team5GameProject.Team5GameProject;
 import byui.cit260.findTheGold.control.CropControl;
+import byui.cit260.findTheGold.control.GameControl;
 import byui.cit260.findTheGold.model.*;
 import byui.cit260.findTheGold.view.*;
 import java.util.ArrayList;
@@ -59,8 +60,8 @@ public class GameMenuView extends MenuView {
             manageCrops();
             break;
         case 5: 
-            displayMenu();
-            break;        
+            return;
+                  
     }
     }
     
@@ -70,6 +71,17 @@ public class GameMenuView extends MenuView {
     //Returns: none
     public static void viewList(){
         
+        String filePath;
+        
+        //prompt user and get a file path
+        System.out.println("\n\nEnter the file path where you want to lead the game from:");
+        keyboard.nextLine();
+        filePath = keyboard.nextLine();
+        
+        //calls the viewList in MainMenuView
+        GameControl.createAnimalList();
+        
+        //display
         ListMenuView lv = new ListMenuView();
         lv.displayMenu();
     }
@@ -119,7 +131,7 @@ public class GameMenuView extends MenuView {
             
             //System.out.println("\nWhat percentage of the harvest would you like"
             //        + "to be paid in tithes and offering?");
-            CropView.payOfferingView();
+            CropView.setOfferingView();
             //userInput = keyboard.nextInt();
             //CropControl.payOffering(userInput, theCropData.getWheatInStore(), theCropData);
             

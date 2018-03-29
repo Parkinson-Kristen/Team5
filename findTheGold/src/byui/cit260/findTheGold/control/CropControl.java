@@ -124,8 +124,10 @@ public static void sellLand(int landPrice, int acresToSell, CropData cropData)th
 //Purpose: set aside wheat to feed the people
 //Parameters: wheat in store must be greater than wheat needed to feed people
 //Return: wheat in store after feeding people
-public static void feedPeople(int wheatInStore, int peopleFed, CropData cropData)throws CropException{
+public static void feedPeople(int peopleFed, CropData cropData)throws CropException{
 
+    int wheatInStore = cropData.getWheatInStore();
+    
     //bushelsPerPerson = wheat * 20 Bushels to feed 1 
     int bushelsPerPerson = wheatInStore * 20;
     
@@ -153,7 +155,7 @@ public static void feedPeople(int wheatInStore, int peopleFed, CropData cropData
 //      It takes 10 people to farm 1 acres of land
 //      Cannot plant more acres than owned
 // Returns: Number of acres that have been planted.
-public static void plantCrops(int wheatToPlant, int acresToPlant, CropData cropData)throws CropException{
+public static void plantCrops(int acresToPlant, CropData cropData)throws CropException{
    
     //If acresToPlant < 0, return -1
     if (acresToPlant < 0)
@@ -251,18 +253,14 @@ public static int harvestCrops(int acresPlanted, CropData cropData){
 public static int payOffering(int offering, CropData cropData){
        
     int wheatInStore = cropData.getWheatInStore();
-    try {
-        CropControl.setOffering(offering, cropData);
-        int offeringBushels = cropData.getOffering();
-        int wheat = (wheatInStore - offeringBushels);
+    
+    int offeringBushels, wheat; 
+   
+        offeringBushels = cropData.getOffering();
+        wheat = (wheatInStore - offeringBushels);
         cropData.setWheatInStore(wheat); 
         return wheat;
-    }
-    catch(CropException e)
-        {
-            System.out.println(e.getMessage());
-            return -1;
-        }          
+            
         
     }
 

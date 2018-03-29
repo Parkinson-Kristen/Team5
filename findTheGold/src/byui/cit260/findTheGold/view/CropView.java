@@ -96,21 +96,38 @@ public static void sellLandView(){
 //Purpose:
 //Parameters:
 //Returns:
-public static void payOfferingView(){
+public static void setOfferingView(){
      
     //CropControl.payOffering(offeringBushels, wheatInStore, CropData cropData);
 
     //Prompt the user to enter the 
     System.out.format("The amount of tithing you offer directly affects your \n"
             + "harvest outcome and percentage of wheat in store eaten by rats \n");
-    System.out.print("\nWhat percentage of your harvest would you like to \n"
-            + "contribute to your tithe offering? ");
+    
     
     //Get the user's input and save it
     int offering;
-    offering = keyboard.nextInt();
+    boolean paramsNotOkay;
+    do
+    {
+        paramsNotOkay = false;
+        System.out.print("\nWhat percentage of your harvest would you like to \n"
+            + "contribute to your tithe offering? ");
+        offering = keyboard.nextInt();
+        try
+        {
+           CropControl.setOffering(offering, theCropData);
+        }
+        catch(CropException e)
+        {
+            System.out.println("Apologies master, this cannot be done.");
+            System.out.println(e.getMessage());
+            paramsNotOkay = true;
+        }
+    }while(paramsNotOkay);
     
-    
+
+
     //Call the payOffering() method in the control layer to pay tithes
     CropControl.payOffering(offering, theCropData);  
 }
@@ -128,18 +145,18 @@ public static void feedPeopleView(){
     
     
     //Get the user's input and save it
-    int wheatForPeople;
+    int peopleFed;
     boolean paramsNotOkay;
     do
     {
         paramsNotOkay = false;
         System.out.print("\nHow many bushls whoud you like to set aside to feed your \n"
             + " your people? ");
-        wheatForPeople = keyboard.nextInt();
+        peopleFed = keyboard.nextInt();
         try
         {
          //Call the feePeople() method in the control layer to feed people
-        CropControl.feedPeople(wheatForPeople, wheatForPeople, theCropData);   
+        CropControl.feedPeople(peopleFed, theCropData);   
         }
         catch(CropException e)
         {
@@ -172,7 +189,7 @@ public static void plantCropsView(){
         try
         {
             //Call the plantCrops() method in the control layer to plant crops
-            CropControl.plantCrops(amountToPlant, amountToPlant, theCropData);  
+            CropControl.plantCrops(amountToPlant, theCropData);  
         }
         catch(CropException e)
         {
@@ -210,7 +227,7 @@ public static void runCropsView(){
     buyLandView();
     sellLandView();
     plantCropsView();
-    payOfferingView();
+    setOfferingView();
     
     //add calls to the other crop view methods
     //as they are written

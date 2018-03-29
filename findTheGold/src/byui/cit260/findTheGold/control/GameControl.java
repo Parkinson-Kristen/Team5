@@ -8,6 +8,10 @@ package byui.cit260.findTheGold.control;
 import byui.cit260.findTheGold.Team5GameProject.Team5GameProject;
 import byui.cit260.findTheGold.model.*;
 import byui.cit260.findTheGold.view.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -95,7 +99,51 @@ private static Game theGame;
         thePlayer.setPlayerName(playerName);
         theGame.setPlayer(thePlayer);
 }
-  
+    
+    //the getSavedGame method
+    //Purpose: load a saved game from disk
+    //Parameters: the file path
+    //Returns: none
+    //Side Effect: the game reference in the driver is updated
+    public static void getSavedGame(String filePath){
+        
+     
+        Game theGame = null;
+        
+        try (FileInputStream fips = new FileInputStream(filePath))
+        {
+            ObjectInputStream input = new ObjectInputStream(fips);
+            theGame = (Game) input.readObject();
+            Team5GameProject.setTheGame(theGame);
+        }
+        catch(Exception e)
+        {
+            System.out.println("\nThere was an error reading the saved game file");
+        }
+            
+    }
+ 
+    //the getSavedGame method
+    //Purpose: load a saved game from disk
+    //Parameters: the file path
+    //Returns: none
+    //Side Effect: the game reference in the driver is updated
+    public static void saveAGame(String filePath){
+        
+        Game gameToSave = Team5GameProject.getTheGame();       
+        
+        try (FileOutputStream fileOutput = new FileOutputStream(filePath))
+        {
+            ObjectOutputStream out = new ObjectOutputStream(fileOutput);
+            out.writeObject(gameToSave);
+            //theGame = (Game) input.readObject();
+        }
+        catch(Exception e)
+        {
+            System.out.println("\nThere was an error saving the game file");
+        }
+            
+    }    
     //Create the CropData object
     public static void createCropDataObject(){
     
