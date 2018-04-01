@@ -5,7 +5,6 @@
 //---------------------------
 package byui.cit260.findTheGold.view;
 
-import java.util.Scanner;
 import byui.cit260.findTheGold.control.*;
 import byui.cit260.findTheGold.model.*;
 import byui.cit260.findTheGold.Team5GameProject.*;
@@ -15,8 +14,6 @@ public class MainMenuView extends MenuView {
         
     private String mainMenu;
     private int max;
-    
-    Scanner keyboard = new Scanner(System.in);    
    
 
 //The MainMenuView contructor
@@ -121,7 +118,7 @@ public void saveGameToFile(){
     //display the game menue for the loaded game
     GameMenuView gmv = new GameMenuView();
     gmv.displayMenu();
-    System.out.println("\nStart saved game option selected.");
+    System.out.println("\nSave game option selected.");
 }
 //The displayHelpMenuView method
 //Purpose: displays the help menu

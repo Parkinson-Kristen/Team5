@@ -9,7 +9,6 @@ import byui.cit260.findTheGold.control.*;
 import byui.cit260.findTheGold.model.*;
 import byui.cit260.findTheGold.Team5GameProject.*;
 import byui.cit260.findTheGold.view.*;
-import java.util.Scanner;
 
 
 public class ListMenuView extends MenuView {
@@ -23,8 +22,7 @@ public class ListMenuView extends MenuView {
     private String listMenu;
     private String mainMenu;
     private int max;
-    
-    Scanner keyboard = new Scanner(System.in);
+  
     
     /*public void displayMainMenuView(){
         int menuOption;    
@@ -72,8 +70,8 @@ public class ListMenuView extends MenuView {
                     listTeam(); 
                     break;
                 case 5: //Return to game menu
-                    displayMenu();
-                    break;
+                    return;
+                    
                 default:
                     System.out.println("\n*** Invalid selection *** Try Again");
                     break;

@@ -11,13 +11,9 @@ import byui.cit260.findTheGold.control.GameControl;
 import byui.cit260.findTheGold.model.*;
 import byui.cit260.findTheGold.view.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 
 public class GameMenuView extends MenuView {
-    
-    //Create a Scanner object
-    private static Scanner keyboard = new Scanner(System.in);
     
     //Get reference to the Game object and the Crops object
     private static Game theGame = Team5GameProject.getTheGame();
@@ -34,11 +30,12 @@ public class GameMenuView extends MenuView {
                     "* CITY OF AARON: MAIN GAME MENU *\n" +
                     "*************************************\n" +             
                     "1 - View the Map\n" +
-                    "2 - View/Print a list\n" +
-                    "3 - Move to a new location\n" +
-                    "4 - Manage the Crops\n" +
-                    "5 - Return to the Main menu\n",
-        5);   
+                    "2 - Display/View a list\n" +
+                    "3 - Print a list\n" +
+                    "4 - Move to a new location\n" +
+                    "5 - Manage the Crops\n" +
+                    "6 - Return to the Main menu\n",
+        6);   
     }
     
     
@@ -49,17 +46,20 @@ public class GameMenuView extends MenuView {
         case 1://Displays writen details about the game and location
             viewMap();
             break;
-        case 2://Display view a list
+        case 2://Display/view a list
             viewList();
             break;
-        case 3: //Provides the user with a option to move to new locations
+        case 3://Print a list
+            printList();
+            break;
+        case 4: //Provides the user with a option to move to new locations
             moveToNewLocation();
             break;
-        case 4://displays steps outlining "Play of the Game".  User story
+        case 5://displays steps outlining "Play of the Game".  User story
             //displayed goes step by step
             manageCrops();
             break;
-        case 5: 
+        case 6: 
             return;
                   
     }
@@ -73,8 +73,8 @@ public class GameMenuView extends MenuView {
         
         String filePath;
         
-        //prompt user and get a file path
-        System.out.println("\n\nEnter the file path where you want to lead the game from:");
+        //prompt user to decide which list they would like to view
+        System.out.println("\n\nWhich list would you like to view?");
         keyboard.nextLine();
         filePath = keyboard.nextLine();
         
@@ -141,6 +141,23 @@ public class GameMenuView extends MenuView {
             CropView.displayCropsReportView();
             
    
+    }
+
+    private void printList() {
+        
+        String filePath;
+        
+        //prompt user and get a file path
+        System.out.println("\n\nEnter the file path where you want to print a list to:");
+        keyboard.nextLine();
+        filePath = keyboard.nextLine();
+        
+        //calls the viewList in MainMenuView
+        GameControl.createAnimalList();
+        
+        //display
+        ListMenuView lv = new ListMenuView();
+        lv.displayMenu();
     }
     
 

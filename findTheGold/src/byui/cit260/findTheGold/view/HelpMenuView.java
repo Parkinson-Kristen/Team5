@@ -4,14 +4,11 @@
 //Date last modified: March 2018
 //-------------------------------
 package byui.cit260.findTheGold.view;
-
-import java.util.Scanner;
         
 public class HelpMenuView extends MenuView {
     
     private String gameMenu;
     private int max;
-    Scanner keyboard = new Scanner(System.in);
     
     //The MainMenuVie Constructor
     //Purpose: Initialize the menu data

@@ -49,7 +49,8 @@ public static void buyLandView(){
         catch(CropException e)
         {
             System.out.println("I am sorry master, I cannot do this");
-            System.out.println(e.getMessage());
+            ErrorView.display("CropView",
+                    "Error reading input: " + e.getMessage());
             paramsNotOkay = true;
         }
     }while(paramsNotOkay);
@@ -84,7 +85,8 @@ public static void sellLandView(){
         catch(CropException e)
         {
             System.out.println("Apologies master, this cannot be done.");
-            System.out.println(e.getMessage());
+            ErrorView.display("CropView",
+                    "Error reading input: " + e.getMessage());
             paramsNotOkay = true;
         }
     }while(paramsNotOkay);
@@ -121,7 +123,8 @@ public static void setOfferingView(){
         catch(CropException e)
         {
             System.out.println("Apologies master, this cannot be done.");
-            System.out.println(e.getMessage());
+            ErrorView.display("CropView",
+                    "Error reading input: " + e.getMessage());
             paramsNotOkay = true;
         }
     }while(paramsNotOkay);
@@ -161,7 +164,8 @@ public static void feedPeopleView(){
         catch(CropException e)
         {
             System.out.println("Apologies master, this cannot be done.");
-            System.out.println(e.getMessage());
+            ErrorView.display("CropView",
+                    "Error reading input: " + e.getMessage());
             paramsNotOkay = true;
         }
     }while(paramsNotOkay);
@@ -194,7 +198,8 @@ public static void plantCropsView(){
         catch(CropException e)
         {
             System.out.println("Apologies master, this cannot be done.");
-            System.out.println(e.getMessage());
+            ErrorView.display("CropView",
+                    "Error reading input: " + e.getMessage());
             paramsNotOkay = true;
         }
     }while(paramsNotOkay);   

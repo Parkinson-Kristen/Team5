@@ -17,8 +17,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameControl {
-    
-Scanner keyboard = new Scanner(System.in); 
+
+//declare to get keyboard input
+protected final static Scanner keyboard = new Scanner(System.in);    
     
 //size of the Locations array
 private static final int MAX_ROW = 5;

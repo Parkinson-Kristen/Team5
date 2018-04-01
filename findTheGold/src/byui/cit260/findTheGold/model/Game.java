@@ -13,9 +13,7 @@ import java.io.Serializable;
 import java.util.*;
 
 public class Game implements Serializable {
-    
-    Scanner keyboard = new Scanner(System.in); 
-      
+          
     // class instance variable
     private Map theMap;
     private Player thePlayer;
