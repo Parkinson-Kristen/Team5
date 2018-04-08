@@ -8,6 +8,7 @@ package byui.cit260.findTheGold.view;
 import byui.cit260.findTheGold.Team5GameProject.Team5GameProject;
 import byui.cit260.findTheGold.control.CropControl;
 import byui.cit260.findTheGold.control.GameControl;
+import byui.cit260.findTheGold.control.MapControl;
 import byui.cit260.findTheGold.model.*;
 import byui.cit260.findTheGold.view.*;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class GameMenuView extends MenuView {
     private static Game theGame = Team5GameProject.getTheGame();
     private static CropData theCropData = theGame.getCropData();
     private static ListMenuView listMenuView = new ListMenuView();
+    private static Map theMap = theGame.getTheMap();
     
     private String gameMenu;
     private int max;
@@ -87,11 +89,34 @@ public class GameMenuView extends MenuView {
     }
     
     public static void viewMap(){
+       
+        
         
     }
     
     
     public static void moveToNewLocation(){
+        
+        //Display Instructions
+        System.out.println("\nPlease enter the coordinates of the location"
+                + "you want to move to.");
+        
+        System.out.println("\nEnter the x-coordinate:");
+        int xcoord = keyboard.nextInt();
+        System.out.println("\nEnter the y-coordinate:");
+        int ycoord = keyboard.nextInt();
+        
+        Location toLocation = theMap.getLocation(ycoord, xcoord);
+
+        System.out.println(toLocation.getDescription());
+        
+        
+        //calls the createMap in GameControl
+        //MapControl.getTheMap();
+        
+        //display
+        //MapView mv = new MapView();
+        //mv.toString();
         
     }
     
@@ -143,18 +168,7 @@ public class GameMenuView extends MenuView {
    
     }
 
-    private void printList() {
-        
-        String filePath;
-        
-        //prompt user and get a file path
-        System.out.println("\n\nEnter the file path where you want to print a list to:");
-        keyboard.nextLine();
-        filePath = keyboard.nextLine();
-        
-        //calls the viewList in MainMenuView
-        GameControl.createAnimalList();
-        
+    private void printList() {  
         //display
         ListMenuView lv = new ListMenuView();
         lv.displayMenu();

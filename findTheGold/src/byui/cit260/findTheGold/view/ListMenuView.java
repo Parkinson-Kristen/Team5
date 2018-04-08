@@ -50,8 +50,12 @@ public class ListMenuView extends MenuView {
                     "2 - List or view the tools in the storehouse\n" +
                     "3 - List or view the provisions in the storehouse\n" +
                     "4 - List or view the authors of this game\n" +
-                    "5 - Return to the Main menu\n",
-                    5);         
+                    "5 - Return to the Main menu\n" +
+                    "6 - Save the list of animals of this game to disk\n" +
+                    "7 - Save the list of provisions of this game to disk\n" +
+                    "8 - Save the list of tools of this game to disk\n",
+                 
+                    8);         
     }    
     
     @Override public void doAction(int action){
@@ -71,7 +75,15 @@ public class ListMenuView extends MenuView {
                     break;
                 case 5: //Return to game menu
                     return;
-                    
+                case 6: //Save animal list to file
+                    saveAnimalsList();
+                    break;
+                case 7: //Save provision list to file
+                    saveProvisionsList();
+                    break;
+                case 8: //Save tools list to file
+                    saveToolsList();
+                    break;
                 default:
                     System.out.println("\n*** Invalid selection *** Try Again");
                     break;
@@ -96,6 +108,39 @@ public class ListMenuView extends MenuView {
         ListView.ListTeamMembers();
                 
     }
+ 
+    public void saveAnimalsList(){
+        String filePath;
+        
+        //prompt user and get a file path
+        System.out.println("\n\nEnter the file path where you want to save the animals list to:");
+        keyboard.nextLine();
+        filePath = keyboard.nextLine();     
+        ListView.saveAnimalList(filePath);
+                
+    }  
+ 
+    public void saveProvisionsList(){
+        String filePath;
+        
+        //prompt user and get a file path
+        System.out.println("\n\nEnter the file path where you want to save the provisions list to:");
+        keyboard.nextLine();
+        filePath = keyboard.nextLine();     
+        ListView.saveProvisionList(filePath);
+                
+    }
+    
+    public void saveToolsList(){
+        String filePath;
+        
+        //prompt user and get a file path
+        System.out.println("\n\nEnter the file path where you want to save the tools list to:");
+        keyboard.nextLine();
+        filePath = keyboard.nextLine();     
+        ListView.saveToolList(filePath);
+                
+    }    
     
     
 }

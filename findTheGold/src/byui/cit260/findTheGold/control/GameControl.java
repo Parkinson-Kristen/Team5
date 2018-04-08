@@ -79,6 +79,7 @@ private static Game theGame;
     GameControl.createAnimalList();
     GameControl.createToolList();
     GameControl.createProvisionList();
+    GameControl.createMap();
     //GameControl.
     
     //Display initial report for city stats
@@ -236,7 +237,7 @@ private static Game theGame;
               "of Aaron.";
        //set the hilltop fortification location with a hint
        loc.setDescription(fortifications);
-       loc.setSymbol("-->^^^<--");
+       loc.setSymbol(">^<");
        theMap.setLocation(4,4,loc);
        
        
@@ -266,14 +267,14 @@ private static Game theGame;
        //create a string for the farming fields location
        String farmland = "\nYou are in the fertile valley of the Land of Aaron." +
                "In the spring, this low farmland is easily irrigated and the rich" +
-               "soil is once again ready for planting golden wheat - the staff of" +
+               "soil is once again ready for planting golden wheat - the staff of " +
                "life.";
        //set the farmland location with a hint
        loc.setDescription(farmland + "\nOne bushel of wheat seed with plant two acres of wheat");
        loc.setSymbol("!!!");
        for (int i = 0; i <= 1; i++)
        {
-           for (int col = 1; col <= MAX_COL; col++)
+           for (int col = 1; col < MAX_COL; col++)
             {
                 theMap.setLocation(i, col, loc);
             }
@@ -326,7 +327,7 @@ private static Game theGame;
                "night and where they keep their weapons.";
        //set the armory location with a hint
        loc.setDescription(armory);
-       loc.setSymbol(" -->");
+       loc.setSymbol("-->");
        theMap.setLocation(3, 4, loc);
              
        //create a string for Lake Lamoni location
