@@ -240,7 +240,7 @@ private static Game theGame;
        loc.setSymbol(">^<");
        theMap.setLocation(4,4,loc);
        
-       
+       loc = new Location();
        //create a string that will go in the Location objects that contain the river
        String river ="\nYou are on the River.  The river is the source of life" +
                "for our city.  The river cuts through the Land of Aaron near the" +
@@ -256,14 +256,16 @@ private static Game theGame;
               theMap.setLocation(i, c, loc);
        }
        
+       loc = new Location();
        ////create a string for the grazing pasture location
        String pasture = "\nThese pastures are for the kings cattle to graze";
        //set the grazing pasture location with a hint
        loc.setDescription(pasture);
        loc.setSymbol("///");
        theMap.setLocation(4, 3, loc);
+       theMap.setLocation(4, 2, loc);
        
-       
+       loc = new Location();
        //create a string for the farming fields location
        String farmland = "\nYou are in the fertile valley of the Land of Aaron." +
                "In the spring, this low farmland is easily irrigated and the rich" +
@@ -280,6 +282,7 @@ private static Game theGame;
             }
        }
        
+       loc = new Location();
        //create a string for the orchards location
        String orchards = "\nThe orchards are filled with apples, peaches and oranges.";
        //set the orchards location with a hint
@@ -288,13 +291,16 @@ private static Game theGame;
        theMap.setLocation(3, 0, loc);
        theMap.setLocation(4, 0, loc);
        
+       loc = new Location();
        //create a string for the vinyards location
        String vineyards = "\nThe vinyards grow grapes for the kings winery.";
        //set the vinyards location with a hint
        loc.setDescription(vineyards);
        loc.setSymbol("***");
        theMap.setLocation(3, 2, loc);
+       theMap.setLocation(2, 2, loc);
        
+       loc = new Location();
        //create a string for the city square location
        String CitySquare = "\nThe city square is the heart of the city." +
                "The buildings are made of limestone that glisten in the setting" +
@@ -304,6 +310,7 @@ private static Game theGame;
        loc.setSymbol("$$$");
        theMap.setLocation(2, 3, loc);
        
+       loc = new Location();
        //create a string for the city suburbs location
        String suburbs = "\nThe suburbs are the location for the homes of all" +
                "the citizens of the City of Aaron.";
@@ -312,6 +319,7 @@ private static Game theGame;
        loc.setSymbol("&&&");
        theMap.setLocation(2, 4, loc);
        
+       loc = new Location();
        //create a string for the granery location
        String granery = "\nYou are in the granery - where all of the wheat is" +
                "stored.  This place is highly guarded.  The only real danger is" +
@@ -322,6 +330,7 @@ private static Game theGame;
        loc.setSymbol("###");
        theMap.setLocation(3, 3, loc);
        
+       loc = new Location();
        //create a string for the armory location
        String armory = "\nThe armory is where your city guard bunks for the" +
                "night and where they keep their weapons.";
@@ -329,7 +338,8 @@ private static Game theGame;
        loc.setDescription(armory);
        loc.setSymbol("-->");
        theMap.setLocation(3, 4, loc);
-             
+       
+       loc = new Location();
        //create a string for Lake Lamoni location
        String LakeLamoni = "\nLake Lamoni is a serene setting.  This is a place" +
                "to come and enjoy the beauty of God's creations.  Families visit" +
@@ -343,6 +353,7 @@ private static Game theGame;
               theMap.setLocation(l, c, loc);
        }
        
+       loc = new Location();
        //create a string for the Tower Hill location
        String TowerHill = "\nTower Hill lookout is next to Lake Lamoni.  Not only" +
                "can it stand as a lookout over the lake, but also of the king's" +
@@ -353,7 +364,8 @@ private static Game theGame;
        loc.setSymbol("!^!");
        theMap.setLocation(2, 0, loc);
          
-       theGame.setTheMap(theMap);
+
+        theGame.setTheMap(theMap);
     }
 
     public static void displayLists(){
