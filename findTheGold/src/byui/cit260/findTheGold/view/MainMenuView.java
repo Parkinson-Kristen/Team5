@@ -109,7 +109,7 @@ public void saveGameToFile(){
     
     //prompt user and got a file path
     System.out.println("\n\nEnter the file path where you want to save the game:");
-    //keyboard.nextLine(); //this gets rid of the newline left by getMenuOption()
+    keyboard.nextLine(); //this gets rid of the newline left by getMenuOption()
     filePath = keyboard.nextLine();
     
     //calls the getSavedGame() method in the GameControl class to load the game

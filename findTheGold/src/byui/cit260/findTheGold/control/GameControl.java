@@ -231,9 +231,9 @@ private static Game theGame;
        Location loc = new Location();
         
        //create a string for the hilltop fortification location 
-       String fortifications = "\nThe hilltop fortification sit atop Mount" +
-              "Amanecer.  These fortifications guard the city from intruders" +
-              "from the south as well as being a lookout over the entire Valley" +
+       String fortifications = "\nThe hilltop fortification sit atop Mount " +
+              "Amanecer.  These fortifications guard the city from intruder s" +
+              "from the south as well as being a lookout over the entire Valley " +
               "of Aaron.";
        //set the hilltop fortification location with a hint
        loc.setDescription(fortifications);
@@ -242,10 +242,10 @@ private static Game theGame;
        
        loc = new Location();
        //create a string that will go in the Location objects that contain the river
-       String river ="\nYou are on the River.  The river is the source of life" +
-               "for our city.  The river cuts through the Land of Aaron near the" +
-               "western borders, dividing the land 2/3 on it's Eastern banks" +
-               "and 1/3 of the land on the Western banks.  The river empties into" +
+       String river ="\nYou are on the River.  The river is the source of life " +
+               "for our city.  The river cuts through the Land of Aaron near the " +
+               "western borders, dividing the land 2/3 on it's Eastern banks " +
+               "and 1/3 of the land on the Western banks.  The river empties into " +
                "Lake Lamoni on the Northwestern edge of our land";
        //use the setters in teh Location class to set the description and symbol
        loc.setDescription(river);
@@ -267,8 +267,8 @@ private static Game theGame;
        
        loc = new Location();
        //create a string for the farming fields location
-       String farmland = "\nYou are in the fertile valley of the Land of Aaron." +
-               "In the spring, this low farmland is easily irrigated and the rich" +
+       String farmland = "\nYou are in the fertile valley of the Land of Aaron. " +
+               "In the spring, this low farmland is easily irrigated and the rich " +
                "soil is once again ready for planting golden wheat - the staff of " +
                "life.";
        //set the farmland location with a hint
@@ -302,8 +302,8 @@ private static Game theGame;
        
        loc = new Location();
        //create a string for the city square location
-       String CitySquare = "\nThe city square is the heart of the city." +
-               "The buildings are made of limestone that glisten in the setting" +
+       String CitySquare = "\nThe city square is the heart of the city. " +
+               "The buildings are made of limestone that glisten in the setting " +
                "sun.  This is location of all govenment buildings.";
        //set the city square location with a hint
        loc.setDescription(CitySquare);
@@ -312,7 +312,7 @@ private static Game theGame;
        
        loc = new Location();
        //create a string for the city suburbs location
-       String suburbs = "\nThe suburbs are the location for the homes of all" +
+       String suburbs = "\nThe suburbs are the location for the homes of all " +
                "the citizens of the City of Aaron.";
        //set the city suburbs location with a hint
        loc.setDescription(suburbs);
@@ -321,18 +321,18 @@ private static Game theGame;
        
        loc = new Location();
        //create a string for the granery location
-       String granery = "\nYou are in the granery - where all of the wheat is" +
-               "stored.  This place is highly guarded.  The only real danger is" +
+       String granery = "\nYou are in the granery - where all of the wheat is " +
+               "stored.  This place is highly guarded.  The only real danger is " +
                "RATS!  Be aware that rats can eat your store of wheat.";
        //set the granery location with a hint
-       loc.setDescription(granery + "\n20 bushels of" +
+       loc.setDescription(granery + "\n20 bushels of " +
        "wheat is required to keep 1 citizen alive for the full year");
        loc.setSymbol("###");
        theMap.setLocation(3, 3, loc);
        
        loc = new Location();
        //create a string for the armory location
-       String armory = "\nThe armory is where your city guard bunks for the" +
+       String armory = "\nThe armory is where your city guard bunks for the " +
                "night and where they keep their weapons.";
        //set the armory location with a hint
        loc.setDescription(armory);
@@ -341,8 +341,8 @@ private static Game theGame;
        
        loc = new Location();
        //create a string for Lake Lamoni location
-       String LakeLamoni = "\nLake Lamoni is a serene setting.  This is a place" +
-               "to come and enjoy the beauty of God's creations.  Families visit" +
+       String LakeLamoni = "\nLake Lamoni is a serene setting.  This is a place " +
+               "to come and enjoy the beauty of God's creations.  Families visit " +
                "to enjoy some time together and also to fish.";
        //set the Lake Lamoni location with a hint
        loc.setDescription(LakeLamoni);
@@ -355,9 +355,9 @@ private static Game theGame;
        
        loc = new Location();
        //create a string for the Tower Hill location
-       String TowerHill = "\nTower Hill lookout is next to Lake Lamoni.  Not only" +
-               "can it stand as a lookout over the lake, but also of the king's" +
-               "orchards and vineyards.  Neighboring cities have been known to" +
+       String TowerHill = "\nTower Hill lookout is next to Lake Lamoni.  Not only " +
+               "can it stand as a lookout over the lake, but also of the king's " +
+               "orchards and vineyards.  Neighboring cities have been known to " +
                "try to infiltrate the city using the orchard as cover.";
        //set the Tower Hill location with a hint
        loc.setDescription(TowerHill);

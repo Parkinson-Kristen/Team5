@@ -50,10 +50,10 @@ public class ListMenuView extends MenuView {
                     "2 - List or view the tools in the storehouse\n" +
                     "3 - List or view the provisions in the storehouse\n" +
                     "4 - List or view the authors of this game\n" +
-                    "5 - Return to the Main menu\n" +
-                    "6 - Save the list of animals of this game to disk\n" +
-                    "7 - Save the list of provisions of this game to disk\n" +
-                    "8 - Save the list of tools of this game to disk\n",
+                    "5 - Save the list of animals of this game to disk\n" +
+                    "6 - Save the list of provisions of this game to disk\n" +
+                    "7 - Save the list of tools of this game to disk\n" +
+                    "8 - Return to the Main menu\n",
                  
                     8);         
     }    
@@ -73,17 +73,17 @@ public class ListMenuView extends MenuView {
                 case 4: //View list of authors of Team5 game
                     listTeam(); 
                     break;
-                case 5: //Return to game menu
-                    return;
-                case 6: //Save animal list to file
+                case 5: //Save animal list to file
                     saveAnimalsList();
                     break;
-                case 7: //Save provision list to file
+                case 6: //Save provision list to file
                     saveProvisionsList();
                     break;
-                case 8: //Save tools list to file
+                case 7: //Save tools list to file
                     saveToolsList();
                     break;
+                case 8: //Return to game menu
+                    return;
                 default:
                     System.out.println("\n*** Invalid selection *** Try Again");
                     break;
